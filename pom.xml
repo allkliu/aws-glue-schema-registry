@@ -409,7 +409,7 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <excludes>**/apicurio/**</excludes>
+                    <excludes>**/apicurio/**, **/native-schema-registry/**, **/schemaregistry/**</excludes>
                     <suppressionsFileExpression>checkstyle.suppression.filter</suppressionsFileExpression>
                     <configLocation>${user.dir}/build-tools/src/main/resources/checkstyle.xml
                     </configLocation>
