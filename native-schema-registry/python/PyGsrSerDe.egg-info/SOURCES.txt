@@ -1,0 +1,12 @@
+setup.py
+PyGsrSerDe/PyGsrSerDe.py
+PyGsrSerDe/__init__.py
+PyGsrSerDe.egg-info/PKG-INFO
+PyGsrSerDe.egg-info/SOURCES.txt
+PyGsrSerDe.egg-info/dependency_links.txt
+PyGsrSerDe.egg-info/top_level.txt
+c/src/glue_schema_registry_deserializer.c
+c/src/glue_schema_registry_schema.c
+c/src/glue_schema_registry_serializer.c
+c/src/mutable_byte_array.c
+c/src/read_only_byte_array.c

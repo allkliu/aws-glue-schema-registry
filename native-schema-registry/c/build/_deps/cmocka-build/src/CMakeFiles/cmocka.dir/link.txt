@@ -1,0 +1,1 @@
+/usr/bin/gcc  -fsanitize=address,undefined -fsanitize-recover=address -fno-stack-protector -fprofile-arcs -ftest-coverage -ggdb3 -O2 -Wall -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -dynamiclib -Wl,-headerpad_max_install_names -current_version 0.7.0 -o libcmocka.0.7.0.dylib -install_name @rpath/libcmocka.0.dylib CMakeFiles/cmocka.dir/cmocka.c.o 

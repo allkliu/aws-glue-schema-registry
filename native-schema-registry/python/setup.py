@@ -1,7 +1,9 @@
-from setuptools import setup, Extension
+from setuptools import setup, Extension, find_packages
 from glob import glob
 
 source_files = glob("c/src/*.c") + glob("c/src/swig/glue_schema_registry_serde.i")
+print('source_files')
+print(source_files)
 include_dirs = ["c/include/", "deps/target/"]
 libraries = ["deps/target/nativeschemaregistry"]
 extension_module = Extension(
