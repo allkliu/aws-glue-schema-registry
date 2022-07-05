@@ -1,0 +1,9 @@
+file(REMOVE_RECURSE
+  "/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/csharp/AWSGsrSerDe/AWSGsrSerDe/glue_schema_registry_serdeCSHARP_wrap.c"
+  "/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/csharp/AWSGsrSerDe/AWSGsrSerDe/GsrSerDe.cs"
+  "/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/csharp/AWSGsrSerDe/AWSGsrSerDe/GsrSerDePINVOKE.cs"
+  "src/CMakeFiles/GsrSerDeCsGen.dir/glue_schema_registry_serdeCSHARP.stamp"
+  "/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/python/PyGsrSerDe/glue_schema_registry_serdePYTHON_wrap.c"
+  "/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/python/PyGsrSerDe/GsrSerDe.py"
+  "src/CMakeFiles/GsrSerDePyGen.dir/glue_schema_registry_serdePYTHON.stamp"
+)

@@ -1,0 +1,13 @@
+MANIFEST.in
+setup.py
+PyGsrSerDe/GsrSerDe.py
+PyGsrSerDe/PyGsrSerDe.py
+PyGsrSerDe/__init__.py
+PyGsrSerDe.egg-info/PKG-INFO
+PyGsrSerDe.egg-info/SOURCES.txt
+PyGsrSerDe.egg-info/dependency_links.txt
+PyGsrSerDe.egg-info/top_level.txt
+PyGsrSerde/_GsrSerDePyGen.dylib
+PyGsrSerde/libnative_schema_registry_c.dylib
+PyGsrSerde/libnative_schema_registry_c_data_types.dylib
+PyGsrSerde/libnativeschemaregistry.dylib

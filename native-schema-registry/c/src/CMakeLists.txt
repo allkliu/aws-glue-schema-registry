@@ -87,3 +87,45 @@ add_custom_command(
         COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${SERDE_MODULE_NAME}> ${CSHARP_GEN_LIB_PATH}/
 )
 
+#####Python
+find_package(PythonLibs REQUIRED)
+set(PYTHON_MODULE_NAME GsrSerDePyGen)
+set(PYTHON_ROOT_PATH ${PROJECT_SOURCE_DIR}/../python/PyGsrSerDe)
+set(PYTHON_SOURCE_PATH ${PYTHON_ROOT_PATH}/)
+set(PYTHON_GEN_LIB_PATH ${PYTHON_ROOT_PATH})
+swig_add_library(
+        ${PYTHON_MODULE_NAME}
+        TYPE SHARED
+        LANGUAGE python
+        OUTPUT_DIR "${PYTHON_SOURCE_PATH}"
+        SOURCES ${GsrSerDeSrc}
+)
+list(APPEND PYTHON_INCLUDES
+        "${PROJECT_SOURCE_DIR}/include/"
+        "/usr/local/Cellar/python@3.7/3.7.13_1/Frameworks/Python.framework/Versions/3.7/include/python3.7m/")
+target_include_directories(${PYTHON_MODULE_NAME} PUBLIC ${PYTHON_INCLUDES})
+set_target_properties(
+        ${PYTHON_MODULE_NAME}
+        PROPERTIES
+        #INCLUDE_DIRECTORIES "${PROJECT_SOURCE_DIR}/include/"
+        SWIG_USE_TARGET_INCLUDE_DIRECTORIES TRUE
+)
+swig_link_libraries(
+        ${PYTHON_MODULE_NAME}
+        PUBLIC
+        ${DATA_TYPES_MODULE_NAME}
+        ${SERDE_MODULE_NAME}
+        ${NATIVE_SCHEMA_REGISTRY_MODULE_NAME}
+        ${PYTHON_LIBRARIES}
+)
+##TODO: Fix this during release. We should segregate Debug and Release
+##Copying built libraries to PYTHON project
+add_custom_command(
+        TARGET ${PYTHON_MODULE_NAME}
+        POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${PYTHON_MODULE_NAME}> ${PYTHON_GEN_LIB_PATH}/
+        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${DATA_TYPES_MODULE_NAME}> ${PYTHON_GEN_LIB_PATH}/
+        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${NATIVE_SCHEMA_REGISTRY_MODULE_NAME}> ${PYTHON_GEN_LIB_PATH}/
+        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${SERDE_MODULE_NAME}> ${PYTHON_GEN_LIB_PATH}/
+)
+

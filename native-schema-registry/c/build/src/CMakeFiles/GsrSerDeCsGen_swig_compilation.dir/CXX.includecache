@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/swig/glue_schema_registry_deserializer.i
+glue_schema_registry_deserializer.h
+/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/swig/glue_schema_registry_deserializer.h
+
+/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/swig/glue_schema_registry_schema.i
+glue_schema_registry_schema.h
+/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/swig/glue_schema_registry_schema.h
+
+/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/swig/glue_schema_registry_serde.i
+read_only_byte_array.i
+/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/swig/read_only_byte_array.i
+mutable_byte_array.i
+/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/swig/mutable_byte_array.i
+glue_schema_registry_schema.i
+/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/swig/glue_schema_registry_schema.i
+glue_schema_registry_serializer.i
+/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/swig/glue_schema_registry_serializer.i
+glue_schema_registry_deserializer.i
+/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/swig/glue_schema_registry_deserializer.i
+
+/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/swig/glue_schema_registry_serializer.i
+glue_schema_registry_serializer.h
+/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/swig/glue_schema_registry_serializer.h
+
+/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/swig/mutable_byte_array.i
+mutable_byte_array.h
+/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/swig/mutable_byte_array.h
+arrays_csharp.i
+/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/swig/arrays_csharp.i
+
+/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/swig/read_only_byte_array.i
+read_only_byte_array.h
+/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/swig/read_only_byte_array.h
+pybuffer.i
+/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/swig/pybuffer.i
+arrays_csharp.i
+/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/swig/arrays_csharp.i
+
