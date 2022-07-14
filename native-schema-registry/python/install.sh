@@ -12,4 +12,4 @@ $python_cmd -m pip  wheel -w dist --verbose .
 
 export LD_LIBRARY_PATH=LD_LIBRARY_PATH:$PWD/ && auditwheel repair dist/*.whl --plat 'manylinux2014_x86_64'
 
-$python_cmd -m pip install wheelhouse/*.whl --force-reinstall
+$python_cmd -m pip install dist/*.whl --force-reinstall
