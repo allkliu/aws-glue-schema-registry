@@ -419,11 +419,29 @@ MEMORYCHECK_SUPPRESSIONS_FILE:FILEPATH=
 //Build with picky developer flags
 PICKY_DEVELOPER:BOOL=OFF
 
+//Path to a file.
+PYTHON_INCLUDE_DIR:PATH=/Library/Frameworks/Python.framework/Versions/3.10/include/python3.10
+
+//Path to a library.
+PYTHON_LIBRARY:FILEPATH=/Library/Frameworks/Python.framework/Versions/3.10/lib/libpython3.10.dylib
+
+//Path to a library.
+PYTHON_LIBRARY_DEBUG:FILEPATH=PYTHON_LIBRARY_DEBUG-NOTFOUND
+
 //Path to a library.
 RT_LIBRARY:FILEPATH=RT_LIBRARY-NOTFOUND
 
 //Name of the computer/site where compile is being run
 SITE:STRING=147ddacf8d16.ant.amazon.com
+
+//Path to a file.
+SWIG_DIR:PATH=/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2
+
+//Path to a program.
+SWIG_EXECUTABLE:FILEPATH=/usr/local/bin/swig
+
+//Swig version
+SWIG_VERSION:STRING=4.0.2
 
 //Build with unit testing
 UNIT_TESTING:BOOL=OFF
@@ -688,6 +706,10 @@ DEFAULT_LINK_FLAGS:INTERNAL=
 DOXYGEN_DOT_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: DOXYGEN_EXECUTABLE
 DOXYGEN_EXECUTABLE-ADVANCED:INTERNAL=1
+//Details about finding PythonLibs
+FIND_PACKAGE_MESSAGE_DETAILS_PythonLibs:INTERNAL=[/Library/Frameworks/Python.framework/Versions/3.10/lib/libpython3.10.dylib][/Library/Frameworks/Python.framework/Versions/3.10/include/python3.10][v3.10.1()]
+//Details about finding SWIG
+FIND_PACKAGE_MESSAGE_DETAILS_SWIG:INTERNAL=[/usr/local/bin/swig][/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2][c ][v4.0.2()]
 //ADVANCED property for variable: GIT_EXECUTABLE
 GIT_EXECUTABLE-ADVANCED:INTERNAL=1
 //Have include assert.h
@@ -774,12 +796,24 @@ MAKECOMMAND-ADVANCED:INTERNAL=1
 MEMORYCHECK_COMMAND-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: MEMORYCHECK_SUPPRESSIONS_FILE
 MEMORYCHECK_SUPPRESSIONS_FILE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PYTHON_INCLUDE_DIR
+PYTHON_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PYTHON_LIBRARY
+PYTHON_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PYTHON_LIBRARY_DEBUG
+PYTHON_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 //Test REQUIRED_FLAGS_WERROR
 REQUIRED_FLAGS_WERROR:INTERNAL=1
 //Test REQUIRED_FLAGS_WFORMAT
 REQUIRED_FLAGS_WFORMAT:INTERNAL=1
 //ADVANCED property for variable: SITE
 SITE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: SWIG_DIR
+SWIG_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: SWIG_EXECUTABLE
+SWIG_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: SWIG_VERSION
+SWIG_VERSION-ADVANCED:INTERNAL=1
 //Test WITH_FNO_COMMON_FLAG
 WITH_FNO_COMMON_FLAG:INTERNAL=1
 //Test WITH_STACK_CLASH_PROTECTION

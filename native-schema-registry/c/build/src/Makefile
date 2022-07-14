@@ -192,6 +192,20 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+src/CMakeFiles/native_schema_registry_c_data_types.dir/rule:
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/native_schema_registry_c_data_types.dir/rule
+.PHONY : src/CMakeFiles/native_schema_registry_c_data_types.dir/rule
+
+# Convenience name for target.
+native_schema_registry_c_data_types: src/CMakeFiles/native_schema_registry_c_data_types.dir/rule
+.PHONY : native_schema_registry_c_data_types
+
+# fast build rule for target.
+native_schema_registry_c_data_types/fast:
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c_data_types.dir/build.make src/CMakeFiles/native_schema_registry_c_data_types.dir/build
+.PHONY : native_schema_registry_c_data_types/fast
+
+# Convenience name for target.
 src/CMakeFiles/native_schema_registry_c.dir/rule:
 	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/native_schema_registry_c.dir/rule
 .PHONY : src/CMakeFiles/native_schema_registry_c.dir/rule
@@ -204,6 +218,110 @@ native_schema_registry_c: src/CMakeFiles/native_schema_registry_c.dir/rule
 native_schema_registry_c/fast:
 	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c.dir/build.make src/CMakeFiles/native_schema_registry_c.dir/build
 .PHONY : native_schema_registry_c/fast
+
+# Convenience name for target.
+src/CMakeFiles/GsrSerDeCsGen.dir/rule:
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/GsrSerDeCsGen.dir/rule
+.PHONY : src/CMakeFiles/GsrSerDeCsGen.dir/rule
+
+# Convenience name for target.
+GsrSerDeCsGen: src/CMakeFiles/GsrSerDeCsGen.dir/rule
+.PHONY : GsrSerDeCsGen
+
+# fast build rule for target.
+GsrSerDeCsGen/fast:
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDeCsGen.dir/build.make src/CMakeFiles/GsrSerDeCsGen.dir/build
+.PHONY : GsrSerDeCsGen/fast
+
+# Convenience name for target.
+src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir/rule:
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir/rule
+.PHONY : src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir/rule
+
+# Convenience name for target.
+GsrSerDeCsGen_swig_compilation: src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir/rule
+.PHONY : GsrSerDeCsGen_swig_compilation
+
+# fast build rule for target.
+GsrSerDeCsGen_swig_compilation/fast:
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir/build.make src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir/build
+.PHONY : GsrSerDeCsGen_swig_compilation/fast
+
+# Convenience name for target.
+src/CMakeFiles/GsrSerDePyGen.dir/rule:
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/GsrSerDePyGen.dir/rule
+.PHONY : src/CMakeFiles/GsrSerDePyGen.dir/rule
+
+# Convenience name for target.
+GsrSerDePyGen: src/CMakeFiles/GsrSerDePyGen.dir/rule
+.PHONY : GsrSerDePyGen
+
+# fast build rule for target.
+GsrSerDePyGen/fast:
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDePyGen.dir/build.make src/CMakeFiles/GsrSerDePyGen.dir/build
+.PHONY : GsrSerDePyGen/fast
+
+# Convenience name for target.
+src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir/rule:
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir/rule
+.PHONY : src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir/rule
+
+# Convenience name for target.
+GsrSerDePyGen_swig_compilation: src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir/rule
+.PHONY : GsrSerDePyGen_swig_compilation
+
+# fast build rule for target.
+GsrSerDePyGen_swig_compilation/fast:
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir/build.make src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir/build
+.PHONY : GsrSerDePyGen_swig_compilation/fast
+
+Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/csharp/AWSGsrSerDe/AWSGsrSerDe/glue_schema_registry_serdeCSHARP_wrap.o: Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/csharp/AWSGsrSerDe/AWSGsrSerDe/glue_schema_registry_serdeCSHARP_wrap.c.o
+.PHONY : Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/csharp/AWSGsrSerDe/AWSGsrSerDe/glue_schema_registry_serdeCSHARP_wrap.o
+
+# target to build an object file
+Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/csharp/AWSGsrSerDe/AWSGsrSerDe/glue_schema_registry_serdeCSHARP_wrap.c.o:
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDeCsGen.dir/build.make src/CMakeFiles/GsrSerDeCsGen.dir/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/csharp/AWSGsrSerDe/AWSGsrSerDe/glue_schema_registry_serdeCSHARP_wrap.c.o
+.PHONY : Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/csharp/AWSGsrSerDe/AWSGsrSerDe/glue_schema_registry_serdeCSHARP_wrap.c.o
+
+Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/csharp/AWSGsrSerDe/AWSGsrSerDe/glue_schema_registry_serdeCSHARP_wrap.i: Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/csharp/AWSGsrSerDe/AWSGsrSerDe/glue_schema_registry_serdeCSHARP_wrap.c.i
+.PHONY : Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/csharp/AWSGsrSerDe/AWSGsrSerDe/glue_schema_registry_serdeCSHARP_wrap.i
+
+# target to preprocess a source file
+Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/csharp/AWSGsrSerDe/AWSGsrSerDe/glue_schema_registry_serdeCSHARP_wrap.c.i:
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDeCsGen.dir/build.make src/CMakeFiles/GsrSerDeCsGen.dir/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/csharp/AWSGsrSerDe/AWSGsrSerDe/glue_schema_registry_serdeCSHARP_wrap.c.i
+.PHONY : Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/csharp/AWSGsrSerDe/AWSGsrSerDe/glue_schema_registry_serdeCSHARP_wrap.c.i
+
+Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/csharp/AWSGsrSerDe/AWSGsrSerDe/glue_schema_registry_serdeCSHARP_wrap.s: Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/csharp/AWSGsrSerDe/AWSGsrSerDe/glue_schema_registry_serdeCSHARP_wrap.c.s
+.PHONY : Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/csharp/AWSGsrSerDe/AWSGsrSerDe/glue_schema_registry_serdeCSHARP_wrap.s
+
+# target to generate assembly for a file
+Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/csharp/AWSGsrSerDe/AWSGsrSerDe/glue_schema_registry_serdeCSHARP_wrap.c.s:
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDeCsGen.dir/build.make src/CMakeFiles/GsrSerDeCsGen.dir/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/csharp/AWSGsrSerDe/AWSGsrSerDe/glue_schema_registry_serdeCSHARP_wrap.c.s
+.PHONY : Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/csharp/AWSGsrSerDe/AWSGsrSerDe/glue_schema_registry_serdeCSHARP_wrap.c.s
+
+Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/python/PyGsrSerDe/glue_schema_registry_serdePYTHON_wrap.o: Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/python/PyGsrSerDe/glue_schema_registry_serdePYTHON_wrap.c.o
+.PHONY : Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/python/PyGsrSerDe/glue_schema_registry_serdePYTHON_wrap.o
+
+# target to build an object file
+Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/python/PyGsrSerDe/glue_schema_registry_serdePYTHON_wrap.c.o:
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDePyGen.dir/build.make src/CMakeFiles/GsrSerDePyGen.dir/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/python/PyGsrSerDe/glue_schema_registry_serdePYTHON_wrap.c.o
+.PHONY : Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/python/PyGsrSerDe/glue_schema_registry_serdePYTHON_wrap.c.o
+
+Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/python/PyGsrSerDe/glue_schema_registry_serdePYTHON_wrap.i: Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/python/PyGsrSerDe/glue_schema_registry_serdePYTHON_wrap.c.i
+.PHONY : Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/python/PyGsrSerDe/glue_schema_registry_serdePYTHON_wrap.i
+
+# target to preprocess a source file
+Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/python/PyGsrSerDe/glue_schema_registry_serdePYTHON_wrap.c.i:
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDePyGen.dir/build.make src/CMakeFiles/GsrSerDePyGen.dir/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/python/PyGsrSerDe/glue_schema_registry_serdePYTHON_wrap.c.i
+.PHONY : Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/python/PyGsrSerDe/glue_schema_registry_serdePYTHON_wrap.c.i
+
+Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/python/PyGsrSerDe/glue_schema_registry_serdePYTHON_wrap.s: Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/python/PyGsrSerDe/glue_schema_registry_serdePYTHON_wrap.c.s
+.PHONY : Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/python/PyGsrSerDe/glue_schema_registry_serdePYTHON_wrap.s
+
+# target to generate assembly for a file
+Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/python/PyGsrSerDe/glue_schema_registry_serdePYTHON_wrap.c.s:
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDePyGen.dir/build.make src/CMakeFiles/GsrSerDePyGen.dir/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/python/PyGsrSerDe/glue_schema_registry_serdePYTHON_wrap.c.s
+.PHONY : Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/python/PyGsrSerDe/glue_schema_registry_serdePYTHON_wrap.c.s
 
 glue_schema_registry_deserializer.o: glue_schema_registry_deserializer.c.o
 .PHONY : glue_schema_registry_deserializer.o
@@ -234,7 +352,7 @@ glue_schema_registry_schema.o: glue_schema_registry_schema.c.o
 
 # target to build an object file
 glue_schema_registry_schema.c.o:
-	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c.dir/build.make src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_schema.c.o
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c_data_types.dir/build.make src/CMakeFiles/native_schema_registry_c_data_types.dir/glue_schema_registry_schema.c.o
 .PHONY : glue_schema_registry_schema.c.o
 
 glue_schema_registry_schema.i: glue_schema_registry_schema.c.i
@@ -242,7 +360,7 @@ glue_schema_registry_schema.i: glue_schema_registry_schema.c.i
 
 # target to preprocess a source file
 glue_schema_registry_schema.c.i:
-	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c.dir/build.make src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_schema.c.i
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c_data_types.dir/build.make src/CMakeFiles/native_schema_registry_c_data_types.dir/glue_schema_registry_schema.c.i
 .PHONY : glue_schema_registry_schema.c.i
 
 glue_schema_registry_schema.s: glue_schema_registry_schema.c.s
@@ -250,7 +368,7 @@ glue_schema_registry_schema.s: glue_schema_registry_schema.c.s
 
 # target to generate assembly for a file
 glue_schema_registry_schema.c.s:
-	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c.dir/build.make src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_schema.c.s
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c_data_types.dir/build.make src/CMakeFiles/native_schema_registry_c_data_types.dir/glue_schema_registry_schema.c.s
 .PHONY : glue_schema_registry_schema.c.s
 
 glue_schema_registry_serializer.o: glue_schema_registry_serializer.c.o
@@ -282,7 +400,7 @@ mutable_byte_array.o: mutable_byte_array.c.o
 
 # target to build an object file
 mutable_byte_array.c.o:
-	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c.dir/build.make src/CMakeFiles/native_schema_registry_c.dir/mutable_byte_array.c.o
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c_data_types.dir/build.make src/CMakeFiles/native_schema_registry_c_data_types.dir/mutable_byte_array.c.o
 .PHONY : mutable_byte_array.c.o
 
 mutable_byte_array.i: mutable_byte_array.c.i
@@ -290,7 +408,7 @@ mutable_byte_array.i: mutable_byte_array.c.i
 
 # target to preprocess a source file
 mutable_byte_array.c.i:
-	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c.dir/build.make src/CMakeFiles/native_schema_registry_c.dir/mutable_byte_array.c.i
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c_data_types.dir/build.make src/CMakeFiles/native_schema_registry_c_data_types.dir/mutable_byte_array.c.i
 .PHONY : mutable_byte_array.c.i
 
 mutable_byte_array.s: mutable_byte_array.c.s
@@ -298,7 +416,7 @@ mutable_byte_array.s: mutable_byte_array.c.s
 
 # target to generate assembly for a file
 mutable_byte_array.c.s:
-	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c.dir/build.make src/CMakeFiles/native_schema_registry_c.dir/mutable_byte_array.c.s
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c_data_types.dir/build.make src/CMakeFiles/native_schema_registry_c_data_types.dir/mutable_byte_array.c.s
 .PHONY : mutable_byte_array.c.s
 
 read_only_byte_array.o: read_only_byte_array.c.o
@@ -306,7 +424,7 @@ read_only_byte_array.o: read_only_byte_array.c.o
 
 # target to build an object file
 read_only_byte_array.c.o:
-	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c.dir/build.make src/CMakeFiles/native_schema_registry_c.dir/read_only_byte_array.c.o
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c_data_types.dir/build.make src/CMakeFiles/native_schema_registry_c_data_types.dir/read_only_byte_array.c.o
 .PHONY : read_only_byte_array.c.o
 
 read_only_byte_array.i: read_only_byte_array.c.i
@@ -314,7 +432,7 @@ read_only_byte_array.i: read_only_byte_array.c.i
 
 # target to preprocess a source file
 read_only_byte_array.c.i:
-	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c.dir/build.make src/CMakeFiles/native_schema_registry_c.dir/read_only_byte_array.c.i
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c_data_types.dir/build.make src/CMakeFiles/native_schema_registry_c_data_types.dir/read_only_byte_array.c.i
 .PHONY : read_only_byte_array.c.i
 
 read_only_byte_array.s: read_only_byte_array.c.s
@@ -322,7 +440,7 @@ read_only_byte_array.s: read_only_byte_array.c.s
 
 # target to generate assembly for a file
 read_only_byte_array.c.s:
-	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c.dir/build.make src/CMakeFiles/native_schema_registry_c.dir/read_only_byte_array.c.s
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c_data_types.dir/build.make src/CMakeFiles/native_schema_registry_c_data_types.dir/read_only_byte_array.c.s
 .PHONY : read_only_byte_array.c.s
 
 # Help Target
@@ -340,7 +458,18 @@ help:
 	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... GsrSerDeCsGen_swig_compilation"
+	@echo "... GsrSerDePyGen_swig_compilation"
+	@echo "... GsrSerDeCsGen"
+	@echo "... GsrSerDePyGen"
 	@echo "... native_schema_registry_c"
+	@echo "... native_schema_registry_c_data_types"
+	@echo "... Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/csharp/AWSGsrSerDe/AWSGsrSerDe/glue_schema_registry_serdeCSHARP_wrap.o"
+	@echo "... Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/csharp/AWSGsrSerDe/AWSGsrSerDe/glue_schema_registry_serdeCSHARP_wrap.i"
+	@echo "... Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/csharp/AWSGsrSerDe/AWSGsrSerDe/glue_schema_registry_serdeCSHARP_wrap.s"
+	@echo "... Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/python/PyGsrSerDe/glue_schema_registry_serdePYTHON_wrap.o"
+	@echo "... Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/python/PyGsrSerDe/glue_schema_registry_serdePYTHON_wrap.i"
+	@echo "... Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/python/PyGsrSerDe/glue_schema_registry_serdePYTHON_wrap.s"
 	@echo "... glue_schema_registry_deserializer.o"
 	@echo "... glue_schema_registry_deserializer.i"
 	@echo "... glue_schema_registry_deserializer.s"

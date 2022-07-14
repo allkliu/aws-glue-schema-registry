@@ -35,7 +35,12 @@
 /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles/install.dir
 /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles/install/local.dir
 /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles/install/strip.dir
+/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/src/CMakeFiles/native_schema_registry_c_data_types.dir
 /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/src/CMakeFiles/native_schema_registry_c.dir
+/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/src/CMakeFiles/GsrSerDeCsGen.dir
+/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir
+/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/src/CMakeFiles/GsrSerDePyGen.dir
+/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir
 /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/src/CMakeFiles/package.dir
 /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/src/CMakeFiles/package_source.dir
 /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/src/CMakeFiles/test.dir
@@ -48,6 +53,7 @@
 /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/test/CMakeFiles/glue_schema_registry_schema_test.dir
 /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/test/CMakeFiles/read_only_byte_array_test.dir
 /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/test/CMakeFiles/mutable_byte_array_test.dir
+/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/test/CMakeFiles/copy-libs-for-tests.dir
 /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/test/CMakeFiles/package.dir
 /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/test/CMakeFiles/package_source.dir
 /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/test/CMakeFiles/test.dir

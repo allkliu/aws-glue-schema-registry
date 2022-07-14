@@ -233,6 +233,20 @@ mutable_byte_array_test/fast:
 	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/mutable_byte_array_test.dir/build.make test/CMakeFiles/mutable_byte_array_test.dir/build
 .PHONY : mutable_byte_array_test/fast
 
+# Convenience name for target.
+test/CMakeFiles/copy-libs-for-tests.dir/rule:
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/copy-libs-for-tests.dir/rule
+.PHONY : test/CMakeFiles/copy-libs-for-tests.dir/rule
+
+# Convenience name for target.
+copy-libs-for-tests: test/CMakeFiles/copy-libs-for-tests.dir/rule
+.PHONY : copy-libs-for-tests
+
+# fast build rule for target.
+copy-libs-for-tests/fast:
+	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build && $(MAKE) $(MAKESILENT) -f test/CMakeFiles/copy-libs-for-tests.dir/build.make test/CMakeFiles/copy-libs-for-tests.dir/build
+.PHONY : copy-libs-for-tests/fast
+
 glue_schema_registry_schema_test.o: glue_schema_registry_schema_test.c.o
 .PHONY : glue_schema_registry_schema_test.o
 
@@ -320,6 +334,7 @@ help:
 	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... copy-libs-for-tests"
 	@echo "... glue_schema_registry_schema_test"
 	@echo "... mutable_byte_array_test"
 	@echo "... read_only_byte_array_test"

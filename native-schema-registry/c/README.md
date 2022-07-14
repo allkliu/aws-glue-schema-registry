@@ -12,7 +12,7 @@ We use CMake to build the targets in this module.
 cmake --build build --target clean 
 cmake -S. -Bbuild 
 cd build 
-cmake --build .
+cmake --build . --target native_schema_registry_c_data_types
 ```
 ### Testing
 ```asm

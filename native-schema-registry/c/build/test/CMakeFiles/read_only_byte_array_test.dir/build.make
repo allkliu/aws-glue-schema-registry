@@ -92,8 +92,7 @@ read_only_byte_array_test_EXTERNAL_OBJECTS =
 
 test/read_only_byte_array_test: test/CMakeFiles/read_only_byte_array_test.dir/read_only_byte_array_test.c.o
 test/read_only_byte_array_test: test/CMakeFiles/read_only_byte_array_test.dir/build.make
-test/read_only_byte_array_test: src/libnative_schema_registry_c.dylib
-test/read_only_byte_array_test: ../../target/libnativeschemaregistry.dylib
+test/read_only_byte_array_test: src/libnative_schema_registry_c_data_types.dylib
 test/read_only_byte_array_test: _deps/cmocka-build/src/libcmocka.0.7.0.dylib
 test/read_only_byte_array_test: test/CMakeFiles/read_only_byte_array_test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable read_only_byte_array_test"

@@ -176,7 +176,10 @@ _deps/cmocka-build/src/clean: _deps/cmocka-build/src/CMakeFiles/cmocka.dir/clean
 # Directory level rules for directory src
 
 # Recursive "all" directory target.
+src/all: src/CMakeFiles/native_schema_registry_c_data_types.dir/all
 src/all: src/CMakeFiles/native_schema_registry_c.dir/all
+src/all: src/CMakeFiles/GsrSerDeCsGen.dir/all
+src/all: src/CMakeFiles/GsrSerDePyGen.dir/all
 .PHONY : src/all
 
 # Recursive "preinstall" directory target.
@@ -184,7 +187,13 @@ src/preinstall:
 .PHONY : src/preinstall
 
 # Recursive "clean" directory target.
+src/clean: src/CMakeFiles/native_schema_registry_c_data_types.dir/clean
 src/clean: src/CMakeFiles/native_schema_registry_c.dir/clean
+src/clean: src/CMakeFiles/GsrSerDeCsGen.dir/clean
+src/clean: src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir/clean
+src/clean: src/CMakeFiles/GsrSerDePyGen.dir/clean
+src/clean: src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir/clean
+	$(CMAKE_COMMAND) -P src/CMakeFiles/cmake_directory_clean.cmake
 .PHONY : src/clean
 
 #=============================================================================
@@ -194,6 +203,7 @@ src/clean: src/CMakeFiles/native_schema_registry_c.dir/clean
 test/all: test/CMakeFiles/glue_schema_registry_schema_test.dir/all
 test/all: test/CMakeFiles/read_only_byte_array_test.dir/all
 test/all: test/CMakeFiles/mutable_byte_array_test.dir/all
+test/all: test/CMakeFiles/copy-libs-for-tests.dir/all
 test/all: _deps/cmocka-build/all
 .PHONY : test/all
 
@@ -205,6 +215,7 @@ test/preinstall: _deps/cmocka-build/preinstall
 test/clean: test/CMakeFiles/glue_schema_registry_schema_test.dir/clean
 test/clean: test/CMakeFiles/read_only_byte_array_test.dir/clean
 test/clean: test/CMakeFiles/mutable_byte_array_test.dir/clean
+test/clean: test/CMakeFiles/copy-libs-for-tests.dir/clean
 test/clean: _deps/cmocka-build/clean
 .PHONY : test/clean
 
@@ -937,18 +948,44 @@ CMakeFiles/ContinuousSubmit.dir/clean:
 .PHONY : CMakeFiles/ContinuousSubmit.dir/clean
 
 #=============================================================================
+# Target rules for target src/CMakeFiles/native_schema_registry_c_data_types.dir
+
+# All Build rule for target.
+src/CMakeFiles/native_schema_registry_c_data_types.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c_data_types.dir/build.make src/CMakeFiles/native_schema_registry_c_data_types.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c_data_types.dir/build.make src/CMakeFiles/native_schema_registry_c_data_types.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=16,17,18,19 "Built target native_schema_registry_c_data_types"
+.PHONY : src/CMakeFiles/native_schema_registry_c_data_types.dir/all
+
+# Build rule for subdir invocation for target.
+src/CMakeFiles/native_schema_registry_c_data_types.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/native_schema_registry_c_data_types.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles 0
+.PHONY : src/CMakeFiles/native_schema_registry_c_data_types.dir/rule
+
+# Convenience name for target.
+native_schema_registry_c_data_types: src/CMakeFiles/native_schema_registry_c_data_types.dir/rule
+.PHONY : native_schema_registry_c_data_types
+
+# clean rule for target.
+src/CMakeFiles/native_schema_registry_c_data_types.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c_data_types.dir/build.make src/CMakeFiles/native_schema_registry_c_data_types.dir/clean
+.PHONY : src/CMakeFiles/native_schema_registry_c_data_types.dir/clean
+
+#=============================================================================
 # Target rules for target src/CMakeFiles/native_schema_registry_c.dir
 
 # All Build rule for target.
 src/CMakeFiles/native_schema_registry_c.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c.dir/build.make src/CMakeFiles/native_schema_registry_c.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c.dir/build.make src/CMakeFiles/native_schema_registry_c.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=7,8,9,10,11,12 "Built target native_schema_registry_c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=13,14,15 "Built target native_schema_registry_c"
 .PHONY : src/CMakeFiles/native_schema_registry_c.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/native_schema_registry_c.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/native_schema_registry_c.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/native_schema_registry_c.dir/rule
@@ -963,19 +1000,127 @@ src/CMakeFiles/native_schema_registry_c.dir/clean:
 .PHONY : src/CMakeFiles/native_schema_registry_c.dir/clean
 
 #=============================================================================
+# Target rules for target src/CMakeFiles/GsrSerDeCsGen.dir
+
+# All Build rule for target.
+src/CMakeFiles/GsrSerDeCsGen.dir/all: src/CMakeFiles/native_schema_registry_c_data_types.dir/all
+src/CMakeFiles/GsrSerDeCsGen.dir/all: src/CMakeFiles/native_schema_registry_c.dir/all
+src/CMakeFiles/GsrSerDeCsGen.dir/all: src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir/all
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDeCsGen.dir/build.make src/CMakeFiles/GsrSerDeCsGen.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDeCsGen.dir/build.make src/CMakeFiles/GsrSerDeCsGen.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=1,2 "Built target GsrSerDeCsGen"
+.PHONY : src/CMakeFiles/GsrSerDeCsGen.dir/all
+
+# Build rule for subdir invocation for target.
+src/CMakeFiles/GsrSerDeCsGen.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles 10
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/GsrSerDeCsGen.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles 0
+.PHONY : src/CMakeFiles/GsrSerDeCsGen.dir/rule
+
+# Convenience name for target.
+GsrSerDeCsGen: src/CMakeFiles/GsrSerDeCsGen.dir/rule
+.PHONY : GsrSerDeCsGen
+
+# clean rule for target.
+src/CMakeFiles/GsrSerDeCsGen.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDeCsGen.dir/build.make src/CMakeFiles/GsrSerDeCsGen.dir/clean
+.PHONY : src/CMakeFiles/GsrSerDeCsGen.dir/clean
+
+#=============================================================================
+# Target rules for target src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir
+
+# All Build rule for target.
+src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir/build.make src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir/build.make src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=3 "Built target GsrSerDeCsGen_swig_compilation"
+.PHONY : src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir/all
+
+# Build rule for subdir invocation for target.
+src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles 1
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles 0
+.PHONY : src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir/rule
+
+# Convenience name for target.
+GsrSerDeCsGen_swig_compilation: src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir/rule
+.PHONY : GsrSerDeCsGen_swig_compilation
+
+# clean rule for target.
+src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir/build.make src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir/clean
+.PHONY : src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir/clean
+
+#=============================================================================
+# Target rules for target src/CMakeFiles/GsrSerDePyGen.dir
+
+# All Build rule for target.
+src/CMakeFiles/GsrSerDePyGen.dir/all: src/CMakeFiles/native_schema_registry_c_data_types.dir/all
+src/CMakeFiles/GsrSerDePyGen.dir/all: src/CMakeFiles/native_schema_registry_c.dir/all
+src/CMakeFiles/GsrSerDePyGen.dir/all: src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir/all
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDePyGen.dir/build.make src/CMakeFiles/GsrSerDePyGen.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDePyGen.dir/build.make src/CMakeFiles/GsrSerDePyGen.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=4,5 "Built target GsrSerDePyGen"
+.PHONY : src/CMakeFiles/GsrSerDePyGen.dir/all
+
+# Build rule for subdir invocation for target.
+src/CMakeFiles/GsrSerDePyGen.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles 10
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/GsrSerDePyGen.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles 0
+.PHONY : src/CMakeFiles/GsrSerDePyGen.dir/rule
+
+# Convenience name for target.
+GsrSerDePyGen: src/CMakeFiles/GsrSerDePyGen.dir/rule
+.PHONY : GsrSerDePyGen
+
+# clean rule for target.
+src/CMakeFiles/GsrSerDePyGen.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDePyGen.dir/build.make src/CMakeFiles/GsrSerDePyGen.dir/clean
+.PHONY : src/CMakeFiles/GsrSerDePyGen.dir/clean
+
+#=============================================================================
+# Target rules for target src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir
+
+# All Build rule for target.
+src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir/build.make src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir/build.make src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=6 "Built target GsrSerDePyGen_swig_compilation"
+.PHONY : src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir/all
+
+# Build rule for subdir invocation for target.
+src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles 1
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles 0
+.PHONY : src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir/rule
+
+# Convenience name for target.
+GsrSerDePyGen_swig_compilation: src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir/rule
+.PHONY : GsrSerDePyGen_swig_compilation
+
+# clean rule for target.
+src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir/build.make src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir/clean
+.PHONY : src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir/clean
+
+#=============================================================================
 # Target rules for target test/CMakeFiles/glue_schema_registry_schema_test.dir
 
 # All Build rule for target.
-test/CMakeFiles/glue_schema_registry_schema_test.dir/all: src/CMakeFiles/native_schema_registry_c.dir/all
+test/CMakeFiles/glue_schema_registry_schema_test.dir/all: src/CMakeFiles/native_schema_registry_c_data_types.dir/all
 test/CMakeFiles/glue_schema_registry_schema_test.dir/all: _deps/cmocka-build/src/CMakeFiles/cmocka.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/glue_schema_registry_schema_test.dir/build.make test/CMakeFiles/glue_schema_registry_schema_test.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/glue_schema_registry_schema_test.dir/build.make test/CMakeFiles/glue_schema_registry_schema_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=3,4 "Built target glue_schema_registry_schema_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=9,10 "Built target glue_schema_registry_schema_test"
 .PHONY : test/CMakeFiles/glue_schema_registry_schema_test.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/glue_schema_registry_schema_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/glue_schema_registry_schema_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/glue_schema_registry_schema_test.dir/rule
@@ -993,16 +1138,16 @@ test/CMakeFiles/glue_schema_registry_schema_test.dir/clean:
 # Target rules for target test/CMakeFiles/read_only_byte_array_test.dir
 
 # All Build rule for target.
-test/CMakeFiles/read_only_byte_array_test.dir/all: src/CMakeFiles/native_schema_registry_c.dir/all
+test/CMakeFiles/read_only_byte_array_test.dir/all: src/CMakeFiles/native_schema_registry_c_data_types.dir/all
 test/CMakeFiles/read_only_byte_array_test.dir/all: _deps/cmocka-build/src/CMakeFiles/cmocka.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/read_only_byte_array_test.dir/build.make test/CMakeFiles/read_only_byte_array_test.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/read_only_byte_array_test.dir/build.make test/CMakeFiles/read_only_byte_array_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=13,14 "Built target read_only_byte_array_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=20,21 "Built target read_only_byte_array_test"
 .PHONY : test/CMakeFiles/read_only_byte_array_test.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/read_only_byte_array_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/read_only_byte_array_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/read_only_byte_array_test.dir/rule
@@ -1020,16 +1165,16 @@ test/CMakeFiles/read_only_byte_array_test.dir/clean:
 # Target rules for target test/CMakeFiles/mutable_byte_array_test.dir
 
 # All Build rule for target.
-test/CMakeFiles/mutable_byte_array_test.dir/all: src/CMakeFiles/native_schema_registry_c.dir/all
+test/CMakeFiles/mutable_byte_array_test.dir/all: src/CMakeFiles/native_schema_registry_c_data_types.dir/all
 test/CMakeFiles/mutable_byte_array_test.dir/all: _deps/cmocka-build/src/CMakeFiles/cmocka.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/mutable_byte_array_test.dir/build.make test/CMakeFiles/mutable_byte_array_test.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/mutable_byte_array_test.dir/build.make test/CMakeFiles/mutable_byte_array_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=5,6 "Built target mutable_byte_array_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=11,12 "Built target mutable_byte_array_test"
 .PHONY : test/CMakeFiles/mutable_byte_array_test.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/mutable_byte_array_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/mutable_byte_array_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/mutable_byte_array_test.dir/rule
@@ -1042,6 +1187,33 @@ mutable_byte_array_test: test/CMakeFiles/mutable_byte_array_test.dir/rule
 test/CMakeFiles/mutable_byte_array_test.dir/clean:
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/mutable_byte_array_test.dir/build.make test/CMakeFiles/mutable_byte_array_test.dir/clean
 .PHONY : test/CMakeFiles/mutable_byte_array_test.dir/clean
+
+#=============================================================================
+# Target rules for target test/CMakeFiles/copy-libs-for-tests.dir
+
+# All Build rule for target.
+test/CMakeFiles/copy-libs-for-tests.dir/all: src/CMakeFiles/native_schema_registry_c_data_types.dir/all
+test/CMakeFiles/copy-libs-for-tests.dir/all: _deps/cmocka-build/src/CMakeFiles/cmocka.dir/all
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/copy-libs-for-tests.dir/build.make test/CMakeFiles/copy-libs-for-tests.dir/depend
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/copy-libs-for-tests.dir/build.make test/CMakeFiles/copy-libs-for-tests.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num= "Built target copy-libs-for-tests"
+.PHONY : test/CMakeFiles/copy-libs-for-tests.dir/all
+
+# Build rule for subdir invocation for target.
+test/CMakeFiles/copy-libs-for-tests.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles 6
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/copy-libs-for-tests.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles 0
+.PHONY : test/CMakeFiles/copy-libs-for-tests.dir/rule
+
+# Convenience name for target.
+copy-libs-for-tests: test/CMakeFiles/copy-libs-for-tests.dir/rule
+.PHONY : copy-libs-for-tests
+
+# clean rule for target.
+test/CMakeFiles/copy-libs-for-tests.dir/clean:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/copy-libs-for-tests.dir/build.make test/CMakeFiles/copy-libs-for-tests.dir/clean
+.PHONY : test/CMakeFiles/copy-libs-for-tests.dir/clean
 
 #=============================================================================
 # Target rules for target _deps/cmocka-build/CMakeFiles/dist.dir
@@ -1076,7 +1248,7 @@ _deps/cmocka-build/CMakeFiles/dist.dir/clean:
 _deps/cmocka-build/src/CMakeFiles/cmocka.dir/all:
 	$(MAKE) $(MAKESILENT) -f _deps/cmocka-build/src/CMakeFiles/cmocka.dir/build.make _deps/cmocka-build/src/CMakeFiles/cmocka.dir/depend
 	$(MAKE) $(MAKESILENT) -f _deps/cmocka-build/src/CMakeFiles/cmocka.dir/build.make _deps/cmocka-build/src/CMakeFiles/cmocka.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=1,2 "Built target cmocka"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=7,8 "Built target cmocka"
 .PHONY : _deps/cmocka-build/src/CMakeFiles/cmocka.dir/all
 
 # Build rule for subdir invocation for target.

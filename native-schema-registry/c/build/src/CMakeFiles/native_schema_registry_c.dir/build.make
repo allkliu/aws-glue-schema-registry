@@ -69,52 +69,10 @@ include src/CMakeFiles/native_schema_registry_c.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/CMakeFiles/native_schema_registry_c.dir/flags.make
 
-src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_schema.c.o: src/CMakeFiles/native_schema_registry_c.dir/flags.make
-src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_schema.c.o: ../src/glue_schema_registry_schema.c
-src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_schema.c.o: src/CMakeFiles/native_schema_registry_c.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_schema.c.o"
-	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/src && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_schema.c.o -MF CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_schema.c.o.d -o CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_schema.c.o -c /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/glue_schema_registry_schema.c
-
-src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_schema.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_schema.c.i"
-	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/src && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/glue_schema_registry_schema.c > CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_schema.c.i
-
-src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_schema.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_schema.c.s"
-	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/src && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/glue_schema_registry_schema.c -o CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_schema.c.s
-
-src/CMakeFiles/native_schema_registry_c.dir/read_only_byte_array.c.o: src/CMakeFiles/native_schema_registry_c.dir/flags.make
-src/CMakeFiles/native_schema_registry_c.dir/read_only_byte_array.c.o: ../src/read_only_byte_array.c
-src/CMakeFiles/native_schema_registry_c.dir/read_only_byte_array.c.o: src/CMakeFiles/native_schema_registry_c.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object src/CMakeFiles/native_schema_registry_c.dir/read_only_byte_array.c.o"
-	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/src && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/CMakeFiles/native_schema_registry_c.dir/read_only_byte_array.c.o -MF CMakeFiles/native_schema_registry_c.dir/read_only_byte_array.c.o.d -o CMakeFiles/native_schema_registry_c.dir/read_only_byte_array.c.o -c /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/read_only_byte_array.c
-
-src/CMakeFiles/native_schema_registry_c.dir/read_only_byte_array.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/native_schema_registry_c.dir/read_only_byte_array.c.i"
-	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/src && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/read_only_byte_array.c > CMakeFiles/native_schema_registry_c.dir/read_only_byte_array.c.i
-
-src/CMakeFiles/native_schema_registry_c.dir/read_only_byte_array.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/native_schema_registry_c.dir/read_only_byte_array.c.s"
-	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/src && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/read_only_byte_array.c -o CMakeFiles/native_schema_registry_c.dir/read_only_byte_array.c.s
-
-src/CMakeFiles/native_schema_registry_c.dir/mutable_byte_array.c.o: src/CMakeFiles/native_schema_registry_c.dir/flags.make
-src/CMakeFiles/native_schema_registry_c.dir/mutable_byte_array.c.o: ../src/mutable_byte_array.c
-src/CMakeFiles/native_schema_registry_c.dir/mutable_byte_array.c.o: src/CMakeFiles/native_schema_registry_c.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object src/CMakeFiles/native_schema_registry_c.dir/mutable_byte_array.c.o"
-	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/src && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/CMakeFiles/native_schema_registry_c.dir/mutable_byte_array.c.o -MF CMakeFiles/native_schema_registry_c.dir/mutable_byte_array.c.o.d -o CMakeFiles/native_schema_registry_c.dir/mutable_byte_array.c.o -c /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/mutable_byte_array.c
-
-src/CMakeFiles/native_schema_registry_c.dir/mutable_byte_array.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/native_schema_registry_c.dir/mutable_byte_array.c.i"
-	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/src && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/mutable_byte_array.c > CMakeFiles/native_schema_registry_c.dir/mutable_byte_array.c.i
-
-src/CMakeFiles/native_schema_registry_c.dir/mutable_byte_array.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/native_schema_registry_c.dir/mutable_byte_array.c.s"
-	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/src && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/mutable_byte_array.c -o CMakeFiles/native_schema_registry_c.dir/mutable_byte_array.c.s
-
 src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_serializer.c.o: src/CMakeFiles/native_schema_registry_c.dir/flags.make
 src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_serializer.c.o: ../src/glue_schema_registry_serializer.c
 src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_serializer.c.o: src/CMakeFiles/native_schema_registry_c.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_serializer.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_serializer.c.o"
 	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/src && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_serializer.c.o -MF CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_serializer.c.o.d -o CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_serializer.c.o -c /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/glue_schema_registry_serializer.c
 
 src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_serializer.c.i: cmake_force
@@ -128,7 +86,7 @@ src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_serializer.c.s:
 src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_deserializer.c.o: src/CMakeFiles/native_schema_registry_c.dir/flags.make
 src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_deserializer.c.o: ../src/glue_schema_registry_deserializer.c
 src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_deserializer.c.o: src/CMakeFiles/native_schema_registry_c.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_deserializer.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_deserializer.c.o"
 	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/src && /usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_deserializer.c.o -MF CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_deserializer.c.o.d -o CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_deserializer.c.o -c /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/src/glue_schema_registry_deserializer.c
 
 src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_deserializer.c.i: cmake_force
@@ -141,24 +99,18 @@ src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_deserializer.c.
 
 # Object files for target native_schema_registry_c
 native_schema_registry_c_OBJECTS = \
-"CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_schema.c.o" \
-"CMakeFiles/native_schema_registry_c.dir/read_only_byte_array.c.o" \
-"CMakeFiles/native_schema_registry_c.dir/mutable_byte_array.c.o" \
 "CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_serializer.c.o" \
 "CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_deserializer.c.o"
 
 # External object files for target native_schema_registry_c
 native_schema_registry_c_EXTERNAL_OBJECTS =
 
-src/libnative_schema_registry_c.dylib: src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_schema.c.o
-src/libnative_schema_registry_c.dylib: src/CMakeFiles/native_schema_registry_c.dir/read_only_byte_array.c.o
-src/libnative_schema_registry_c.dylib: src/CMakeFiles/native_schema_registry_c.dir/mutable_byte_array.c.o
 src/libnative_schema_registry_c.dylib: src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_serializer.c.o
 src/libnative_schema_registry_c.dylib: src/CMakeFiles/native_schema_registry_c.dir/glue_schema_registry_deserializer.c.o
 src/libnative_schema_registry_c.dylib: src/CMakeFiles/native_schema_registry_c.dir/build.make
 src/libnative_schema_registry_c.dylib: ../../target/libnativeschemaregistry.dylib
 src/libnative_schema_registry_c.dylib: src/CMakeFiles/native_schema_registry_c.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C shared library libnative_schema_registry_c.dylib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C shared library libnative_schema_registry_c.dylib"
 	cd /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/native_schema_registry_c.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

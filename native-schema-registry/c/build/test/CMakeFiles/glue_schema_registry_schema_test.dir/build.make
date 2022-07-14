@@ -92,8 +92,7 @@ glue_schema_registry_schema_test_EXTERNAL_OBJECTS =
 
 test/glue_schema_registry_schema_test: test/CMakeFiles/glue_schema_registry_schema_test.dir/glue_schema_registry_schema_test.c.o
 test/glue_schema_registry_schema_test: test/CMakeFiles/glue_schema_registry_schema_test.dir/build.make
-test/glue_schema_registry_schema_test: src/libnative_schema_registry_c.dylib
-test/glue_schema_registry_schema_test: ../../target/libnativeschemaregistry.dylib
+test/glue_schema_registry_schema_test: src/libnative_schema_registry_c_data_types.dylib
 test/glue_schema_registry_schema_test: _deps/cmocka-build/src/libcmocka.0.7.0.dylib
 test/glue_schema_registry_schema_test: test/CMakeFiles/glue_schema_registry_schema_test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable glue_schema_registry_schema_test"

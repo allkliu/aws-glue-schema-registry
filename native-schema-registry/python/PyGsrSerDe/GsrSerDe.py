@@ -10,9 +10,9 @@ if _swig_python_version_info < (2, 7, 0):
 
 # Import the low-level C/C++ module
 if __package__ or "." in __name__:
-    from . import _GsrSerDe
+    from . import _GsrSerDePyGen
 else:
-    import _GsrSerDe
+    import _GsrSerDePyGen
 
 try:
     import builtins as __builtin__
@@ -66,88 +66,91 @@ class read_only_byte_array(object):
     __repr__ = _swig_repr
 
     def __init__(self, data):
-        _GsrSerDe.read_only_byte_array_swiginit(self, _GsrSerDe.new_read_only_byte_array(data))
-    __swig_destroy__ = _GsrSerDe.delete_read_only_byte_array
+        _GsrSerDePyGen.read_only_byte_array_swiginit(self, _GsrSerDePyGen.new_read_only_byte_array(data))
+    __swig_destroy__ = _GsrSerDePyGen.delete_read_only_byte_array
 
     def get_data(self):
-        return _GsrSerDe.read_only_byte_array_get_data(self)
+        return _GsrSerDePyGen.read_only_byte_array_get_data(self)
 
     def get_len(self):
-        return _GsrSerDe.read_only_byte_array_get_len(self)
+        return _GsrSerDePyGen.read_only_byte_array_get_len(self)
 
-# Register read_only_byte_array in _GsrSerDe:
-_GsrSerDe.read_only_byte_array_swigregister(read_only_byte_array)
+# Register read_only_byte_array in _GsrSerDePyGen:
+_GsrSerDePyGen.read_only_byte_array_swigregister(read_only_byte_array)
 
 class mutable_byte_array(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
     def __init__(self, len):
-        _GsrSerDe.mutable_byte_array_swiginit(self, _GsrSerDe.new_mutable_byte_array(len))
-    __swig_destroy__ = _GsrSerDe.delete_mutable_byte_array
+        _GsrSerDePyGen.mutable_byte_array_swiginit(self, _GsrSerDePyGen.new_mutable_byte_array(len))
+    __swig_destroy__ = _GsrSerDePyGen.delete_mutable_byte_array
+
+    def get_data_copy(self, data):
+        return _GsrSerDePyGen.mutable_byte_array_get_data_copy(self, data)
 
     def get_data(self):
-        return _GsrSerDe.mutable_byte_array_get_data(self)
+        return _GsrSerDePyGen.mutable_byte_array_get_data(self)
 
     def get_max_len(self):
-        return _GsrSerDe.mutable_byte_array_get_max_len(self)
+        return _GsrSerDePyGen.mutable_byte_array_get_max_len(self)
 
-# Register mutable_byte_array in _GsrSerDe:
-_GsrSerDe.mutable_byte_array_swigregister(mutable_byte_array)
+# Register mutable_byte_array in _GsrSerDePyGen:
+_GsrSerDePyGen.mutable_byte_array_swigregister(mutable_byte_array)
 
 class glue_schema_registry_schema(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
     def __init__(self, schema_name, schema_def, data_format):
-        _GsrSerDe.glue_schema_registry_schema_swiginit(self, _GsrSerDe.new_glue_schema_registry_schema(schema_name, schema_def, data_format))
-    __swig_destroy__ = _GsrSerDe.delete_glue_schema_registry_schema
+        _GsrSerDePyGen.glue_schema_registry_schema_swiginit(self, _GsrSerDePyGen.new_glue_schema_registry_schema(schema_name, schema_def, data_format))
+    __swig_destroy__ = _GsrSerDePyGen.delete_glue_schema_registry_schema
 
     def get_schema_name(self):
-        return _GsrSerDe.glue_schema_registry_schema_get_schema_name(self)
+        return _GsrSerDePyGen.glue_schema_registry_schema_get_schema_name(self)
 
     def get_schema_def(self):
-        return _GsrSerDe.glue_schema_registry_schema_get_schema_def(self)
+        return _GsrSerDePyGen.glue_schema_registry_schema_get_schema_def(self)
 
     def get_data_format(self):
-        return _GsrSerDe.glue_schema_registry_schema_get_data_format(self)
+        return _GsrSerDePyGen.glue_schema_registry_schema_get_data_format(self)
 
-# Register glue_schema_registry_schema in _GsrSerDe:
-_GsrSerDe.glue_schema_registry_schema_swigregister(glue_schema_registry_schema)
+# Register glue_schema_registry_schema in _GsrSerDePyGen:
+_GsrSerDePyGen.glue_schema_registry_schema_swigregister(glue_schema_registry_schema)
 
 class glue_schema_registry_serializer(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
     def __init__(self):
-        _GsrSerDe.glue_schema_registry_serializer_swiginit(self, _GsrSerDe.new_glue_schema_registry_serializer())
-    __swig_destroy__ = _GsrSerDe.delete_glue_schema_registry_serializer
+        _GsrSerDePyGen.glue_schema_registry_serializer_swiginit(self, _GsrSerDePyGen.new_glue_schema_registry_serializer())
+    __swig_destroy__ = _GsrSerDePyGen.delete_glue_schema_registry_serializer
 
     def encode(self, array, transport_name, gsr_schema):
-        return _GsrSerDe.glue_schema_registry_serializer_encode(self, array, transport_name, gsr_schema)
+        return _GsrSerDePyGen.glue_schema_registry_serializer_encode(self, array, transport_name, gsr_schema)
 
-# Register glue_schema_registry_serializer in _GsrSerDe:
-_GsrSerDe.glue_schema_registry_serializer_swigregister(glue_schema_registry_serializer)
+# Register glue_schema_registry_serializer in _GsrSerDePyGen:
+_GsrSerDePyGen.glue_schema_registry_serializer_swigregister(glue_schema_registry_serializer)
 
 class glue_schema_registry_deserializer(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
     def __init__(self):
-        _GsrSerDe.glue_schema_registry_deserializer_swiginit(self, _GsrSerDe.new_glue_schema_registry_deserializer())
-    __swig_destroy__ = _GsrSerDe.delete_glue_schema_registry_deserializer
+        _GsrSerDePyGen.glue_schema_registry_deserializer_swiginit(self, _GsrSerDePyGen.new_glue_schema_registry_deserializer())
+    __swig_destroy__ = _GsrSerDePyGen.delete_glue_schema_registry_deserializer
 
     def decode(self, array):
-        return _GsrSerDe.glue_schema_registry_deserializer_decode(self, array)
+        return _GsrSerDePyGen.glue_schema_registry_deserializer_decode(self, array)
 
     def can_decode(self, array):
-        return _GsrSerDe.glue_schema_registry_deserializer_can_decode(self, array)
+        return _GsrSerDePyGen.glue_schema_registry_deserializer_can_decode(self, array)
 
     def decode_schema(self, array):
-        return _GsrSerDe.glue_schema_registry_deserializer_decode_schema(self, array)
+        return _GsrSerDePyGen.glue_schema_registry_deserializer_decode_schema(self, array)
 
-# Register glue_schema_registry_deserializer in _GsrSerDe:
-_GsrSerDe.glue_schema_registry_deserializer_swigregister(glue_schema_registry_deserializer)
+# Register glue_schema_registry_deserializer in _GsrSerDePyGen:
+_GsrSerDePyGen.glue_schema_registry_deserializer_swigregister(glue_schema_registry_deserializer)
 
 
 

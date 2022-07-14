@@ -556,6 +556,19 @@ ContinuousSubmit/fast:
 .PHONY : ContinuousSubmit/fast
 
 #=============================================================================
+# Target rules for targets named native_schema_registry_c_data_types
+
+# Build rule for target.
+native_schema_registry_c_data_types: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 native_schema_registry_c_data_types
+.PHONY : native_schema_registry_c_data_types
+
+# fast build rule for target.
+native_schema_registry_c_data_types/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c_data_types.dir/build.make src/CMakeFiles/native_schema_registry_c_data_types.dir/build
+.PHONY : native_schema_registry_c_data_types/fast
+
+#=============================================================================
 # Target rules for targets named native_schema_registry_c
 
 # Build rule for target.
@@ -567,6 +580,58 @@ native_schema_registry_c: cmake_check_build_system
 native_schema_registry_c/fast:
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/native_schema_registry_c.dir/build.make src/CMakeFiles/native_schema_registry_c.dir/build
 .PHONY : native_schema_registry_c/fast
+
+#=============================================================================
+# Target rules for targets named GsrSerDeCsGen
+
+# Build rule for target.
+GsrSerDeCsGen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 GsrSerDeCsGen
+.PHONY : GsrSerDeCsGen
+
+# fast build rule for target.
+GsrSerDeCsGen/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDeCsGen.dir/build.make src/CMakeFiles/GsrSerDeCsGen.dir/build
+.PHONY : GsrSerDeCsGen/fast
+
+#=============================================================================
+# Target rules for targets named GsrSerDeCsGen_swig_compilation
+
+# Build rule for target.
+GsrSerDeCsGen_swig_compilation: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 GsrSerDeCsGen_swig_compilation
+.PHONY : GsrSerDeCsGen_swig_compilation
+
+# fast build rule for target.
+GsrSerDeCsGen_swig_compilation/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir/build.make src/CMakeFiles/GsrSerDeCsGen_swig_compilation.dir/build
+.PHONY : GsrSerDeCsGen_swig_compilation/fast
+
+#=============================================================================
+# Target rules for targets named GsrSerDePyGen
+
+# Build rule for target.
+GsrSerDePyGen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 GsrSerDePyGen
+.PHONY : GsrSerDePyGen
+
+# fast build rule for target.
+GsrSerDePyGen/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDePyGen.dir/build.make src/CMakeFiles/GsrSerDePyGen.dir/build
+.PHONY : GsrSerDePyGen/fast
+
+#=============================================================================
+# Target rules for targets named GsrSerDePyGen_swig_compilation
+
+# Build rule for target.
+GsrSerDePyGen_swig_compilation: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 GsrSerDePyGen_swig_compilation
+.PHONY : GsrSerDePyGen_swig_compilation
+
+# fast build rule for target.
+GsrSerDePyGen_swig_compilation/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir/build.make src/CMakeFiles/GsrSerDePyGen_swig_compilation.dir/build
+.PHONY : GsrSerDePyGen_swig_compilation/fast
 
 #=============================================================================
 # Target rules for targets named glue_schema_registry_schema_test
@@ -606,6 +671,19 @@ mutable_byte_array_test: cmake_check_build_system
 mutable_byte_array_test/fast:
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/mutable_byte_array_test.dir/build.make test/CMakeFiles/mutable_byte_array_test.dir/build
 .PHONY : mutable_byte_array_test/fast
+
+#=============================================================================
+# Target rules for targets named copy-libs-for-tests
+
+# Build rule for target.
+copy-libs-for-tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 copy-libs-for-tests
+.PHONY : copy-libs-for-tests
+
+# fast build rule for target.
+copy-libs-for-tests/fast:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/copy-libs-for-tests.dir/build.make test/CMakeFiles/copy-libs-for-tests.dir/build
+.PHONY : copy-libs-for-tests/fast
 
 #=============================================================================
 # Target rules for targets named dist
@@ -666,6 +744,8 @@ help:
 	@echo "... ExperimentalSubmit"
 	@echo "... ExperimentalTest"
 	@echo "... ExperimentalUpdate"
+	@echo "... GsrSerDeCsGen_swig_compilation"
+	@echo "... GsrSerDePyGen_swig_compilation"
 	@echo "... Nightly"
 	@echo "... NightlyBuild"
 	@echo "... NightlyConfigure"
@@ -676,11 +756,15 @@ help:
 	@echo "... NightlySubmit"
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
+	@echo "... copy-libs-for-tests"
 	@echo "... dist"
+	@echo "... GsrSerDeCsGen"
+	@echo "... GsrSerDePyGen"
 	@echo "... cmocka"
 	@echo "... glue_schema_registry_schema_test"
 	@echo "... mutable_byte_array_test"
 	@echo "... native_schema_registry_c"
+	@echo "... native_schema_registry_c_data_types"
 	@echo "... read_only_byte_array_test"
 .PHONY : help
 

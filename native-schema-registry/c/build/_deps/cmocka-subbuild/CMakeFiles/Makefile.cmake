@@ -10,10 +10,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.23.2/CMakeSystem.cmake"
   "CMakeLists.txt"
   "cmocka-populate-prefix/tmp/cmocka-populate-mkdirs.cmake"
-  "/usr/local/Cellar/cmake/3.23.2/share/cmake/Modules/CMakeDetermineSystem.cmake"
   "/usr/local/Cellar/cmake/3.23.2/share/cmake/Modules/CMakeGenericSystem.cmake"
   "/usr/local/Cellar/cmake/3.23.2/share/cmake/Modules/CMakeInitializeConfigs.cmake"
-  "/usr/local/Cellar/cmake/3.23.2/share/cmake/Modules/CMakeSystem.cmake.in"
   "/usr/local/Cellar/cmake/3.23.2/share/cmake/Modules/CMakeSystemSpecificInformation.cmake"
   "/usr/local/Cellar/cmake/3.23.2/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake"
   "/usr/local/Cellar/cmake/3.23.2/share/cmake/Modules/ExternalProject.cmake"
@@ -35,7 +33,6 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
-  "CMakeFiles/3.23.2/CMakeSystem.cmake"
   "cmocka-populate-prefix/tmp/cmocka-populate-mkdirs.cmake"
   "cmocka-populate-prefix/tmp/cmocka-populate-gitclone.cmake"
   "cmocka-populate-prefix/src/cmocka-populate-stamp/cmocka-populate-gitinfo.txt"

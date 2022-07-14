@@ -4,7 +4,7 @@
 # compile C with /usr/bin/gcc
 C_DEFINES = -Dnative_schema_registry_c_EXPORTS
 
-C_INCLUDES = 
+C_INCLUDES = -isystem /Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/../target
 
 C_FLAGS =  -ftest-coverage -fprofile-arcs -ggdb3 -O2 -Wall -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -fPIC -std=gnu99
 

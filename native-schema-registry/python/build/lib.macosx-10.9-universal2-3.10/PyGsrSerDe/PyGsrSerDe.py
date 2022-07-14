@@ -1,4 +1,4 @@
-from PyGsrSerDe import _GsrSerDe
+#from PyGsrSerDe import _GsrSerDe
 
 from .GsrSerDe import *
 
