@@ -22,34 +22,42 @@ class TestGlueSchemaRegistrySerializer(unittest.TestCase):
     def test_encode(self):
         avro_schema = '{ "type" : "record", "name" : "userInfo", "namespace" : "my.example", "fields" : [{"name" : ' \
                       '"age", "type" : "int"}] } '
-        schema = GlueSchemaRegistrySchema('schemaName', avro_schema, "AVRO")
+        schema = GlueSchemaRegistrySchema('test_schema_name', avro_schema, "AVRO")
         ser = GlueSchemaRegistrySerializer()
+        test_msg = 'this is a test string'
+        random_in_bytes = bytes(test_msg, 'utf8')
         # Validate Input
         self.assertRaises(ValueError, ser.encode, 'test_transport_name', schema, 'not_a_byte_arr')
-        self.assertRaises(ValueError, ser.encode, 'test_transport_name', 'not_a_schema', 'not_a_byte_arr')
-        self.assertRaises(ValueError, ser.encode, 'invalid_test_transport_name@!#$%', schema, 'not_a_byte_arr')
+        self.assertRaises(ValueError, ser.encode, 'test_transport_name', 'not_a_schema', random_in_bytes)
+        self.assertRaises(ValueError, ser.encode, 'invalid_test_transport_name@!#$%', schema, random_in_bytes)
         # Test encoded value
-        self.assertEqual(ser.encode('test_transport_name', schema, '<valid byte array, update later>'),
-                         'correctly encoded output')
+        self.assertEqual(ser.encode('test_transport_name', schema, random_in_bytes),
+                         b'\x03\x00\xb6@\xb8\xabX\xddA\xff\x9c\x80\x80\x05\xde\xb9A\x08this is a test string')
 
 
 class TestGlueSchemaRegistryDeserializer(unittest.TestCase):
     def test_decode(self):
+        encoded_bytes = b'\x03\x00\xb6@\xb8\xabX\xddA\xff\x9c\x80\x80\x05\xde\xb9A\x08this is a test string'
         dsr = GlueSchemaRegistryDeserializer()
         # Validate input
         self.assertRaises(ValueError, dsr.decode, 'not_a_byte_arr')
-        # Test decode value
-        self.assertEqual('a', 'a')
+        # Test decode
+        self.assertEqual(dsr.decode(encoded_bytes), b'this is a test string')
 
     def test_decode_schema(self):
         dsr = GlueSchemaRegistryDeserializer()
+        encoded_bytes = b'\x03\x00\xb6@\xb8\xabX\xddA\xff\x9c\x80\x80\x05\xde\xb9A\x08this is a test string'
         # Validate input
         self.assertRaises(ValueError, dsr.decode_schema(), 'not_a_byte_arr')
-        # test decode schema
-        self.assertEqual('a', 'a')
+        # test decode_schema
+        self.assertEqual(dsr.decode_schema(encoded_bytes), 'correct output')
 
     def test_can_decode(self):
         dsr = GlueSchemaRegistryDeserializer()
+        encoded_bytes = b'\x03\x00\xb6@\xb8\xabX\xddA\xff\x9c\x80\x80\x05\xde\xb9A\x08this is a test string'
+        fake_bytes = b'ads01099ke12'
         # Validate input
         self.assertRaises(ValueError, dsr.can_decode(), 'not_a_byte_arr')
-        self.assertEqual('a', 'a')
+        # test can_decode
+        self.assertEqual(dsr.can_decode(fake_bytes), False)
+        self.assertEqual(dsr.can_decode(encoded_bytes), True)

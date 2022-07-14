@@ -9,13 +9,16 @@ It uses GraalVM to generate the shared library.
 
 1. Install GraalVM: https://www.graalvm.org/
 2. Set JAVA_HOME to use GraalVM
+```
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/<graalvm>/Contents/Home
+```
 3. Install the native image with gu:
 ```asm
 gu install native-image
 ```
 4. Then run mvn install with the native image in the native-schema-registry directory:
 ```asm
-mvn clean install -P native-image
+mvn install -P native-image
 ```
 5. Install swig
 
