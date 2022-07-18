@@ -36,28 +36,26 @@ class TestGlueSchemaRegistrySerializer(unittest.TestCase):
 
 
 class TestGlueSchemaRegistryDeserializer(unittest.TestCase):
+    def __init__(self) -> None:
+        self.dsr = GlueSchemaRegistryDeserializer()
+        self.encoded_bytes = b'\x03\x00\xb6@\xb8\xabX\xddA\xff\x9c\x80\x80\x05\xde\xb9A\x08this is a test string'
+
     def test_decode(self):
-        encoded_bytes = b'\x03\x00\xb6@\xb8\xabX\xddA\xff\x9c\x80\x80\x05\xde\xb9A\x08this is a test string'
-        dsr = GlueSchemaRegistryDeserializer()
         # Validate input
-        self.assertRaises(ValueError, dsr.decode, 'not_a_byte_arr')
+        self.assertRaises(ValueError, self.dsr.decode, 'not_a_byte_arr')
         # Test decode
-        self.assertEqual(dsr.decode(encoded_bytes), b'this is a test string')
+        self.assertEqual(self.dsr.decode(self.encoded_bytes), b'this is a test string')
 
     def test_decode_schema(self):
-        dsr = GlueSchemaRegistryDeserializer()
-        encoded_bytes = b'\x03\x00\xb6@\xb8\xabX\xddA\xff\x9c\x80\x80\x05\xde\xb9A\x08this is a test string'
         # Validate input
-        self.assertRaises(ValueError, dsr.decode_schema(), 'not_a_byte_arr')
+        self.assertRaises(ValueError, self.dsr.decode_schema(), 'not_a_byte_arr')
         # test decode_schema
-        self.assertEqual(dsr.decode_schema(encoded_bytes), 'correct output')
+        self.assertEqual(self.dsr.decode_schema(self.encoded_bytes), 'correct output')
 
     def test_can_decode(self):
-        dsr = GlueSchemaRegistryDeserializer()
-        encoded_bytes = b'\x03\x00\xb6@\xb8\xabX\xddA\xff\x9c\x80\x80\x05\xde\xb9A\x08this is a test string'
         fake_bytes = b'ads01099ke12'
         # Validate input
-        self.assertRaises(ValueError, dsr.can_decode(), 'not_a_byte_arr')
+        self.assertRaises(ValueError, self.dsr.can_decode(), 'not_a_byte_arr')
         # test can_decode
-        self.assertEqual(dsr.can_decode(fake_bytes), False)
-        self.assertEqual(dsr.can_decode(encoded_bytes), True)
+        self.assertEqual(self.dsr.can_decode(fake_bytes), False)
+        self.assertEqual(self.dsr.can_decode(self.encoded_bytes), True)

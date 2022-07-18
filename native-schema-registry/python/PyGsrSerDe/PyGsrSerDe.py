@@ -1,6 +1,6 @@
 #from PyGsrSerDe import _GsrSerDe
 
-from .GsrSerDe import *
+from GsrSerDe import *
 
 """
 TODO: Add documentation and tests.
