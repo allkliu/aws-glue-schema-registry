@@ -1,6 +1,7 @@
 #Ignore IntelliJ files
 .idea/
 *.iml
+native-schema-registry/c/build/
 
 #Ignore Maven files
 **/target

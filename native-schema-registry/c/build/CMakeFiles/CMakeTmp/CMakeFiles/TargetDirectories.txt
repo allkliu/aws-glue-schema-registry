@@ -1,3 +1,0 @@
-/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_5cc74.dir
-/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles/CMakeTmp/CMakeFiles/edit_cache.dir
-/Users/allkliu/Desktop/Allen/glue/aws-glue-schema-registry/native-schema-registry/c/build/CMakeFiles/CMakeTmp/CMakeFiles/rebuild_cache.dir
