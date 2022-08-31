@@ -1,82 +1,85 @@
 package com.amazonaws.services.schemaregistry;
 
 import com.amazonaws.services.schemaregistry.common.Schema;
-import com.amazonaws.services.schemaregistry.common.configs.GlueSchemaRegistryConfiguration;
-import com.amazonaws.services.schemaregistry.serializers.GlueSchemaRegistrySerializer;
-import com.amazonaws.services.schemaregistry.utils.AWSSchemaRegistryConstants;
-import com.google.common.collect.ImmutableMap;
-import com.oracle.svm.core.c.CConst;
+import com.oracle.svm.core.c.ProjectHeaderFile;
 import org.graalvm.nativeimage.IsolateThread;
 import org.graalvm.nativeimage.c.CContext;
 import org.graalvm.nativeimage.c.function.CEntryPoint;
+import org.graalvm.nativeimage.c.function.CFunction;
+import org.graalvm.nativeimage.c.struct.CField;
+import org.graalvm.nativeimage.c.struct.CStruct;
 import org.graalvm.nativeimage.c.type.CCharPointer;
 import org.graalvm.nativeimage.c.type.CTypeConversion;
-import org.graalvm.word.WordFactory;
+import org.graalvm.word.PointerBase;
 
-import java.util.Map;
-
-import static com.amazonaws.services.schemaregistry.ByteArrayConverter.fromCReadOnlyByteArray;
-import static com.amazonaws.services.schemaregistry.ByteArrayConverter.toCMutableByteArray;
-import static com.amazonaws.services.schemaregistry.DataTypes.C_GlueSchemaRegistryErrorPointerHolder;
-import static com.amazonaws.services.schemaregistry.DataTypes.C_GlueSchemaRegistrySchema;
-import static com.amazonaws.services.schemaregistry.DataTypes.C_MutableByteArray;
-import static com.amazonaws.services.schemaregistry.DataTypes.C_ReadOnlyByteArray;
-import static com.amazonaws.services.schemaregistry.DataTypes.HandlerDirectives;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Entry point class for the serialization methods of GSR shared library.
  */
-@CContext(HandlerDirectives.class)
+@CContext(GlueSchemaRegistrySerializationHandler.HandlerDirectives.class)
 public class GlueSchemaRegistrySerializationHandler {
 
-    @CEntryPoint(name = "initialize_serializer")
-    public static void initializeSerializer(IsolateThread isolateThread) {
-        //TODO: Add GlueSchemaRegistryConfiguration to this method. This is hard-coded for now.
-        //TODO: Error handling
-        Map<String, String> configMap =
-            ImmutableMap.of(
-                AWSSchemaRegistryConstants.AWS_REGION,
-                "us-east-1",
-                AWSSchemaRegistryConstants.SCHEMA_AUTO_REGISTRATION_SETTING,
-                "true"
-            );
-        GlueSchemaRegistryConfiguration glueSchemaRegistryConfiguration =
-            new GlueSchemaRegistryConfiguration(configMap);
+    /**
+     * Declare headers required by the shared library.
+     */
+    static class HandlerDirectives implements CContext.Directives {
 
-        SerializerInstance.create(glueSchemaRegistryConfiguration);
+        public static final String INCLUDE_PATH = "clang/include/";
+
+        @Override
+        public List<String> getHeaderFiles() {
+            return Stream.of(
+                "glue_schema_registry_schema.h"
+            )
+                .map(header -> ProjectHeaderFile.resolve("", INCLUDE_PATH + header))
+                .collect(Collectors.toList());
+        }
+    }
+
+    /**
+     * Define the functions to import from C headers.
+     */
+    @CFunction("new_glue_schema_registry_schema")
+    protected static native C_GlueSchemaRegistrySchema
+    newGlueSchemaRegistrySchema(CCharPointer schemaName, CCharPointer schemaDef, CCharPointer dataFormat);
+
+    @CStruct("glue_schema_registry_schema")
+    public interface C_GlueSchemaRegistrySchema extends PointerBase {
+
+        //Read access of a field. A call to the function is replaced with a raw memory load.
+        @CField("schema_name")
+        CCharPointer getSchemaName();
+
+        @CField("schema_def")
+        CCharPointer getSchemaDef();
+
+        @CField("data_format")
+        CCharPointer getDataFormat();
     }
 
     @CEntryPoint(name = "encode_with_schema")
-    public static C_MutableByteArray encodeWithSchema(
-        IsolateThread isolateThread,
-        C_ReadOnlyByteArray c_readOnlyByteArray,
-        @CConst CCharPointer c_transportName,
-        C_GlueSchemaRegistrySchema c_glueSchemaRegistrySchema,
-        C_GlueSchemaRegistryErrorPointerHolder errorPointerHolder) {
-        try {
+    public static C_GlueSchemaRegistrySchema encodeWithSchema(
+        IsolateThread isolateThread, C_GlueSchemaRegistrySchema c_glueSchemaRegistrySchema) {
+        //Access the input C schema object
+        final String schemaName = CTypeConversion.toJavaString(c_glueSchemaRegistrySchema.getSchemaName());
+        final String schemaDef = CTypeConversion.toJavaString(c_glueSchemaRegistrySchema.getSchemaDef());
+        final String dataFormat = CTypeConversion.toJavaString(c_glueSchemaRegistrySchema.getDataFormat());
 
-            //Access the input C schema object
-            final String schemaName = CTypeConversion.toJavaString(c_glueSchemaRegistrySchema.getSchemaName());
-            final String schemaDef = CTypeConversion.toJavaString(c_glueSchemaRegistrySchema.getSchemaDef());
-            final String dataFormat = CTypeConversion.toJavaString(c_glueSchemaRegistrySchema.getDataFormat());
-            final String transportName = CTypeConversion.toJavaString(c_transportName);
+        Schema javaSchema = new Schema(schemaDef, dataFormat, schemaName);
 
-            Schema javaSchema = new Schema(schemaDef, dataFormat, schemaName);
+        System.out.println(
+            String.format("Created Java Schema object: %s %s %s",
+                javaSchema.getSchemaName(), javaSchema.getSchemaDefinition(), javaSchema.getDataFormat()));
 
-            //Read the c_byteArray data and create a new mutable byte array with encoded data
-            byte [] bytesToEncode = fromCReadOnlyByteArray(c_readOnlyByteArray);
+        C_GlueSchemaRegistrySchema cGsrSchema = newGlueSchemaRegistrySchema(
+            CTypeConversion.toCString(javaSchema.getSchemaName()).get(),
+            CTypeConversion.toCString(javaSchema.getSchemaDefinition()).get(),
+            CTypeConversion.toCString(javaSchema.getDataFormat()).get()
+        );
 
-            //Assuming serializer instance is already initialized
-            GlueSchemaRegistrySerializer glueSchemaRegistrySerializer = SerializerInstance.get();
-            byte[] encodedBytes =
-                glueSchemaRegistrySerializer.encode(transportName, javaSchema, bytesToEncode);
-
-            return toCMutableByteArray(encodedBytes, errorPointerHolder);
-        } catch (Exception | Error e) {
-
-            ExceptionWriter.write(errorPointerHolder, e);
-
-            return WordFactory.nullPointer();
-        }
+        return cGsrSchema;
     }
 }
