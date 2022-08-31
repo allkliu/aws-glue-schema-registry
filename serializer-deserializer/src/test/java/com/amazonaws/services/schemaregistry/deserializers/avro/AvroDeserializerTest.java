@@ -14,9 +14,8 @@
  */
 package com.amazonaws.services.schemaregistry.deserializers.avro;
 
-import com.amazonaws.services.schemaregistry.caching.GlueSchemaRegistryDeserializerCache;
-import com.amazonaws.services.schemaregistry.common.AWSSchemaRegistryClient;
 import com.amazonaws.services.schemaregistry.common.GlueSchemaRegistryDataFormatDeserializer;
+import com.amazonaws.services.schemaregistry.common.SchemaByDefinitionFetcher;
 import com.amazonaws.services.schemaregistry.common.configs.GlueSchemaRegistryConfiguration;
 import com.amazonaws.services.schemaregistry.exception.AWSSchemaRegistryException;
 import com.amazonaws.services.schemaregistry.exception.GlueSchemaRegistryIncompatibleDataException;
@@ -77,7 +76,7 @@ public class AvroDeserializerTest {
     @Mock
     public AwsCredentialsProvider mockDefaultCredProvider;
     @Mock
-    private AWSSchemaRegistryClient mockDefaultRegistryClient;
+    private SchemaByDefinitionFetcher mockSchemaByDefinitionFetcher;
 
     private GlueSchemaRegistryConfiguration schemaRegistrySerDeConfigs;
 
@@ -91,7 +90,6 @@ public class AvroDeserializerTest {
         this.schemaRegistrySerDeConfigs = new GlueSchemaRegistryConfiguration(this.configs);
 
         MockitoAnnotations.initMocks(this);
-        invalidateAndGetCache();
     }
 
     /**
@@ -108,7 +106,7 @@ public class AvroDeserializerTest {
                 GlueSchemaRegistrySerializationFacade.builder()
                         .credentialProvider(this.mockDefaultCredProvider)
                         .configs(configs)
-                        .schemaRegistryClient(mockDefaultRegistryClient)
+                        .schemaByDefinitionFetcher(mockSchemaByDefinitionFetcher)
                         .build();
         return getByteBuffer(objectToSerialize, glueSchemaRegistrySerializationFacade, dataFormat);
     }
@@ -132,7 +130,7 @@ public class AvroDeserializerTest {
         return GlueSchemaRegistrySerializationFacade.builder()
                 .credentialProvider(this.mockDefaultCredProvider)
                 .configs(configs)
-                .schemaRegistryClient(this.mockDefaultRegistryClient)
+                .schemaByDefinitionFetcher(this.mockSchemaByDefinitionFetcher)
                 .build();
     }
 
@@ -206,19 +204,6 @@ public class AvroDeserializerTest {
                 .build();
         avroDeserializer.setAvroRecordType(recordType);
         return avroDeserializer;
-    }
-
-    /**
-     * Helper method to construct and return GlueSchemaRegistryDeserializerCache instance.
-     *
-     * @return GlueSchemaRegistryDeserializerCache instance with fresh cache
-     */
-    private GlueSchemaRegistryDeserializerCache invalidateAndGetCache() {
-        GlueSchemaRegistryConfiguration mockConfig = mock(GlueSchemaRegistryConfiguration.class);
-        GlueSchemaRegistryDeserializerCache deserializerCache =
-                GlueSchemaRegistryDeserializerCache.getInstance(mockConfig);
-        deserializerCache.flushCache();
-        return deserializerCache;
     }
 
     /**

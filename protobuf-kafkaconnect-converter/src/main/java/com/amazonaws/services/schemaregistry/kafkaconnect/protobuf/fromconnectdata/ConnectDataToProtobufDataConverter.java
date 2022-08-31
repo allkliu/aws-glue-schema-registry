@@ -1,3 +1,18 @@
+/*
+ * Copyright 2022 Amazon.com, Inc. or its affiliates.
+ * Licensed under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.amazonaws.services.schemaregistry.kafkaconnect.protobuf.fromconnectdata;
 
 import com.amazonaws.services.schemaregistry.kafkaconnect.protobuf.fromconnectschema.ProtobufSchemaConverterUtils;
@@ -38,12 +53,13 @@ public class ConnectDataToProtobufDataConverter {
             final Object fieldValue = data.get(field);
 
             if (field.schema().type().equals(Schema.Type.MAP)) {
-                addMapField(dynamicMessageBuilder, field, fieldValue);
+                addMapField(fileDescriptor, dynamicMessageBuilder, field, fieldValue);
             } else if (field.schema().type().equals(Schema.Type.STRUCT)) {
                 if (field.schema().parameters().containsKey(PROTOBUF_TYPE)
                         && field.schema().parameters().get(PROTOBUF_TYPE).equals(PROTOBUF_ONEOF_TYPE)) {
                     for (Field oneofField : field.schema().fields()) {
-                        addField(dynamicMessageBuilder, oneofField, ((Struct) fieldValue).get(oneofField));
+                        addField(fileDescriptor, dynamicMessageBuilder, oneofField,
+                                ((Struct) fieldValue).get(oneofField));
                     }
                     continue;
                 }
@@ -51,7 +67,7 @@ public class ConnectDataToProtobufDataConverter {
                 Message nestedMessage = convert(fileDescriptor, field.schema(), fieldValue);
                 dynamicMessageBuilder.setField(fieldDescriptor, nestedMessage);
             } else {
-                addField(dynamicMessageBuilder, field, fieldValue);
+                addField(fileDescriptor, dynamicMessageBuilder, field, fieldValue);
             }
         }
 
@@ -65,7 +81,8 @@ public class ConnectDataToProtobufDataConverter {
         return "." + schemaName;
     }
 
-    private void addField(final Message.Builder builder, final Field field, final Object value) {
+    private void addField(final Descriptors.FileDescriptor fileDescriptor, final Message.Builder builder,
+                          final Field field, final Object value) {
         final String protobufFieldName = field.name();
         final Descriptors.FieldDescriptor fieldDescriptor =
             builder.getDescriptorForType().findFieldByName(protobufFieldName);
@@ -83,10 +100,11 @@ public class ConnectDataToProtobufDataConverter {
 
         final DataConverter dataConverter = ConnectDataToProtobufDataConverterFactory.get(schema);
 
-        dataConverter.toProtobufData(schema, value, fieldDescriptor, builder);
+        dataConverter.toProtobufData(fileDescriptor, schema, value, fieldDescriptor, builder);
     }
 
-    private void addMapField(final Message.Builder builder, final Field field, final Object value) {
+    private void addMapField(final Descriptors.FileDescriptor fileDescriptor, final Message.Builder builder,
+                             final Field field, final Object value) {
         final String protobufFieldName = field.name();
         final Schema schema = field.schema();
         final Descriptors.Descriptor mapDescriptor = builder.getDescriptorForType().findNestedTypeByName(
@@ -101,8 +119,10 @@ public class ConnectDataToProtobufDataConverter {
         Map<?, ?> map = (Map<?, ?>) value;
 
         for (Map.Entry<?, ?> entry : map.entrySet()) {
-            keyDataConverter.toProtobufData(schema.keySchema(), entry.getKey(), keyFieldDescriptor, mapBuilder);
-            valueDataConverter.toProtobufData(schema.valueSchema(), entry.getValue(), valueFieldDescriptor, mapBuilder);
+            keyDataConverter.toProtobufData(fileDescriptor, schema.keySchema(), entry.getKey(),
+                    keyFieldDescriptor, mapBuilder);
+            valueDataConverter.toProtobufData(fileDescriptor, schema.valueSchema(), entry.getValue(),
+                    valueFieldDescriptor, mapBuilder);
 
             builder.addRepeatedField(builder.getDescriptorForType().findFieldByName(field.name()),
                     mapBuilder.build());

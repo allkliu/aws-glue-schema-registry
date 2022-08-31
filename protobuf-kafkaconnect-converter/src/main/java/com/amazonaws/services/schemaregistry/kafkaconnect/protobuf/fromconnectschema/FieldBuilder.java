@@ -1,3 +1,18 @@
+/*
+ * Copyright 2022 Amazon.com, Inc. or its affiliates.
+ * Licensed under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.amazonaws.services.schemaregistry.kafkaconnect.protobuf.fromconnectschema;
 
 import com.google.protobuf.DescriptorProtos;
@@ -30,7 +45,6 @@ import static com.amazonaws.services.schemaregistry.kafkaconnect.protobuf.fromco
 @Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class FieldBuilder {
-
     public static void build(
         final Schema schema,
         final DescriptorProtos.FileDescriptorProto.Builder fileDescriptorProtoBuilder,
@@ -197,7 +211,6 @@ public class FieldBuilder {
         }
 
         fieldDescriptorProtoBuilder.setName(fieldName);
-
         return fieldDescriptorProtoBuilder;
     }
 

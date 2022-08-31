@@ -1,14 +1,39 @@
+/*
+ * Copyright 2022 Amazon.com, Inc. or its affiliates.
+ * Licensed under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.amazonaws.services.schemaregistry.kafkaconnect.protobuf;
 
+import com.amazonaws.services.schemaregistry.common.configs.GlueSchemaRegistryConfiguration;
 import com.amazonaws.services.schemaregistry.common.configs.UserAgents;
 import com.amazonaws.services.schemaregistry.deserializers.GlueSchemaRegistryKafkaDeserializer;
+import com.amazonaws.services.schemaregistry.deserializers.protobuf.ProtobufWireFormatDecoder;
+import com.amazonaws.services.schemaregistry.kafkaconnect.protobuf.fromconnectschema.ConnectSchemaToProtobufSchemaConverter;
 import com.amazonaws.services.schemaregistry.serializers.GlueSchemaRegistryKafkaSerializer;
+import com.amazonaws.services.schemaregistry.serializers.protobuf.MessageIndexFinder;
+import com.amazonaws.services.schemaregistry.serializers.protobuf.ProtobufSerializer;
 import com.amazonaws.services.schemaregistry.utils.AWSSchemaRegistryConstants;
+import com.amazonaws.services.schemaregistry.utils.ProtobufMessageType;
 import com.google.common.collect.ImmutableMap;
+import com.google.protobuf.Descriptors;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Message;
+import org.apache.kafka.connect.data.Field;
+import org.apache.kafka.common.cache.Cache;
 import org.apache.kafka.connect.data.Schema;
 import org.apache.kafka.connect.data.SchemaAndValue;
+import org.apache.kafka.connect.data.Struct;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -19,11 +44,15 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import software.amazon.awssdk.services.glue.model.DataFormat;
 
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doNothing;
@@ -120,7 +149,7 @@ public class ProtobufSchemaConverterTest {
                 ToConnectTestDataGenerator.getOneofTypeData(PACKAGE_NAME)),
             Arguments.of(ToConnectTestDataGenerator.getAllTypesProtobufMessages().get(0),
                 ToConnectTestDataGenerator.getAllTypesSchema(PACKAGE_NAME),
-                ToConnectTestDataGenerator.getSAllTypesData(PACKAGE_NAME))
+                ToConnectTestDataGenerator.getAllTypesData(PACKAGE_NAME))
         );
     }
 
@@ -156,5 +185,112 @@ public class ProtobufSchemaConverterTest {
 
         SchemaAndValue expectedSchemaAndValue = new SchemaAndValue(connectSchema, connectData);
         assertEquals(expectedSchemaAndValue, schemaAndValue);
+    }
+
+    @Test
+    public void endToEndTest_forAllTypesSchema() throws IOException {
+
+        Object connectData = ToProtobufTestDataGenerator.getAllTypesData("AllTypes");
+        Schema connectSchema = ToProtobufTestDataGenerator.getAllTypesSchema("AllTypes");
+        DynamicMessage protobufData = ToProtobufTestDataGenerator.getProtobufAllTypesMessage("AllTypes");
+
+        // from connect
+        ArgumentCaptor<Message> argumentCaptor = ArgumentCaptor.forClass(Message.class);
+        doReturn(new byte[] {}).when(serializer).serialize(eq(TOPIC_NAME), any());
+        protobufSchemaConverter.fromConnectData(TOPIC_NAME, connectSchema, connectData);
+        verify(serializer, times(1)).serialize(eq(TOPIC_NAME), argumentCaptor.capture());
+
+        // assert that ConnectToProtobuf conversion is correct
+        assertEquals(protobufData.toString(), argumentCaptor.getValue().toString());
+
+        ProtobufSerializer protobufSerializer =
+                new ProtobufSerializer(new GlueSchemaRegistryConfiguration(new HashMap<String, String>() {{
+                    put(AWSSchemaRegistryConstants.AWS_REGION, "us-west-2");
+                }}));
+
+        // serializedData is the raw data from the serialization
+        final byte[] serializedData = protobufSerializer.serialize(protobufData);
+
+        // fileDescriptor is the schema definition reconstructed from connect data and is registered with Glue Schema
+        // Registry service
+        Descriptors.FileDescriptor fileDescriptor = new ConnectSchemaToProtobufSchemaConverter().convert(connectSchema);
+        ProtobufWireFormatDecoder protobufWireFormatDecoder = new ProtobufWireFormatDecoder(new MessageIndexFinder());
+        DynamicMessage deserializedMessage =
+                (DynamicMessage) protobufWireFormatDecoder.decode(serializedData, fileDescriptor,
+                        ProtobufMessageType.DYNAMIC_MESSAGE);
+        // Mockito is used to mock the actual deserialization result
+        doReturn(deserializedMessage).when(deserializer).deserialize(TOPIC_NAME, serializedData);
+
+        // to connect
+        SchemaAndValue schemaAndValue = protobufSchemaConverter.toConnectData(TOPIC_NAME, serializedData);
+
+        // assert that end to end conversion result is the same as the input
+        Schema actualSchema = schemaAndValue.schema();
+        Object actualData = schemaAndValue.value();
+        assertEquals(connectSchema.name(), actualSchema.name());
+        assertEquals(connectSchema.fields().size(), actualSchema.fields().size());
+        for (Field field: connectSchema.fields()) {
+            String fieldName = field.name();
+            Field actualField = actualSchema.field(fieldName);
+            // assert each field schema is the same
+            assertEquals(field, actualField, fieldName);
+
+            Object expectedFieldObject = ((Struct) connectData).get(field);
+            Object actualFieldObject = ((Struct) actualData).get(actualField);
+            // assert each field value is the same
+            if (field.name().equals("bytes")) {
+                assertTrue(Arrays.equals((byte[]) expectedFieldObject, (byte[]) actualFieldObject));
+            } else {
+                assertEquals(expectedFieldObject, actualFieldObject, fieldName);
+            }
+        }
+    }
+      
+    @Test
+    public void testSchemaCache_toConnectConversion() {
+        Cache<Descriptors.Descriptor, Schema> toConnectSchemaCache = protobufSchemaConverter.getToConnectSchemaCache();
+        assertEquals(0, toConnectSchemaCache.size());
+
+        Message protobufPrimitiveData = ToConnectTestDataGenerator.getPrimitiveProtobufMessages().get(0);
+        final byte[] serializedPrimitiveData = protobufPrimitiveData.toByteArray();
+        doReturn(protobufPrimitiveData).when(deserializer).deserialize(TOPIC_NAME, serializedPrimitiveData);
+        protobufSchemaConverter.toConnectData(TOPIC_NAME, serializedPrimitiveData);
+        assertEquals(1, toConnectSchemaCache.size());
+
+        //converting the same schema to see if the cache is working properly
+        doReturn(protobufPrimitiveData).when(deserializer).deserialize(TOPIC_NAME, serializedPrimitiveData);
+        protobufSchemaConverter.toConnectData(TOPIC_NAME, serializedPrimitiveData);
+        assertEquals(1, toConnectSchemaCache.size());
+
+        Message protobufEnumData = ToConnectTestDataGenerator.getEnumProtobufMessages().get(0);
+        final byte[] serializedEnumData = protobufEnumData.toByteArray();
+        doReturn(protobufEnumData).when(deserializer).deserialize(TOPIC_NAME, serializedEnumData);
+        protobufSchemaConverter.toConnectData(TOPIC_NAME, serializedEnumData);
+        assertEquals(2, toConnectSchemaCache.size());
+
+    }
+
+    @Test
+    public void testSchemaCache_fromConnectConversion() {
+        Cache<Schema, Descriptors.FileDescriptor> fromConnectSchemaCache =
+                protobufSchemaConverter.getFromConnectSchemaCache();
+        assertEquals(0, fromConnectSchemaCache.size());
+
+        doReturn(new byte[] {}).when(serializer).serialize(eq(TOPIC_NAME), any());
+        Object connectPrimitiveData = ToProtobufTestDataGenerator.getPrimitiveTypesData();
+        Schema connectPrimitiveSchema = ToProtobufTestDataGenerator.getPrimitiveSchema(SCHEMA_NAME);
+        protobufSchemaConverter.fromConnectData(TOPIC_NAME, connectPrimitiveSchema, connectPrimitiveData);
+        assertEquals(1, fromConnectSchemaCache.size());
+
+        //converting the same schema to see if the cache is working properly
+        doReturn(new byte[] {}).when(serializer).serialize(eq(TOPIC_NAME), any());
+        protobufSchemaConverter.fromConnectData(TOPIC_NAME, connectPrimitiveSchema, connectPrimitiveData);
+        assertEquals(1, fromConnectSchemaCache.size());
+
+        doReturn(new byte[] {}).when(serializer).serialize(eq(TOPIC_NAME), any());
+        Object connectEnumData = ToProtobufTestDataGenerator.getEnumTypeData("EnumType");
+        Schema connectEnumSchema = ToProtobufTestDataGenerator.getEnumSchema("EnumType");
+        protobufSchemaConverter.fromConnectData(TOPIC_NAME, connectEnumSchema, connectEnumData);
+        assertEquals(2, fromConnectSchemaCache.size());
     }
 }

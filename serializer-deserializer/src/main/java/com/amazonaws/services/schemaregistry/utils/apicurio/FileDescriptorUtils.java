@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Red Hat
+ * Copyright 2021 Red Hat
  * Portions Copyright 2020 Amazon.com, Inc. or its affiliates.
  * All Rights Reserved.
  *
@@ -442,6 +442,7 @@ public class FileDescriptorUtils {
                         .map(o -> DescriptorProtos.FieldOptions.CType.valueOf(o.getValue().toString())).orElse(null);
                 DescriptorProtos.FieldOptions.JSType jsType = findOption(JSTYPE_OPTION, field.getOptions())
                         .map(o -> DescriptorProtos.FieldOptions.JSType.valueOf(o.getValue().toString())).orElse(null);
+
                 String metadataKey = findOptionString(ProtobufSchemaMetadata.metadataKey.getDescriptor().getFullName(),
                         field.getOptions());
                 String metadataValue = findOptionString(ProtobufSchemaMetadata.metadataValue.getDescriptor().getFullName(),
@@ -477,6 +478,10 @@ public class FileDescriptorUtils {
                         .map(o -> DescriptorProtos.FieldOptions.CType.valueOf(o.getValue().toString())).orElse(null);
                 DescriptorProtos.FieldOptions.JSType oneOfJsType = findOption(JSTYPE_OPTION, oneOfField.getOptions())
                         .map(o -> DescriptorProtos.FieldOptions.JSType.valueOf(o.getValue().toString())).orElse(null);
+                String metadataKey = findOptionString(ProtobufSchemaMetadata.metadataKey.getDescriptor().getFullName(),
+                        oneOfField.getOptions());
+                String metadataValue = findOptionString(ProtobufSchemaMetadata.metadataValue.getDescriptor().getFullName(),
+                        oneOfField.getOptions());
 
                 allFields.add(ProtobufMessage.buildFieldDescriptorProto(
                         OPTIONAL,
@@ -490,8 +495,8 @@ public class FileDescriptorUtils {
                         oneOfIsPacked,
                         oneOfCType,
                         oneOfJsType,
-                        null,
-                        null,
+                        metadataKey,
+                        metadataValue,
                         message.protoBuilder().getOneofDeclCount() - 1,
                         isProto3OptionalField));
 
@@ -600,7 +605,7 @@ public class FileDescriptorUtils {
         return builder.build();
     }
 
-    private static ServiceDescriptorProto serviceElementToProto(Service serviceElem) {
+    private static DescriptorProtos.ServiceDescriptorProto serviceElementToProto(Service serviceElem) {
         ServiceDescriptorProto.Builder builder = ServiceDescriptorProto.newBuilder().setName(serviceElem.name());
 
         for (Rpc rpc : serviceElem.rpcs()) {
@@ -1011,7 +1016,6 @@ public class FileDescriptorUtils {
         }
         return defaultJsonName;
     }
-
 
     public static Descriptors.Descriptor toDescriptor(String name, ProtoFileElement protoFileElement, Map<String, ProtoFileElement> dependencies) {
         return toDynamicSchema(name, protoFileElement, dependencies).getMessageDescriptor(name);

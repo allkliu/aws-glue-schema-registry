@@ -1,3 +1,18 @@
+/*
+ * Copyright 2022 Amazon.com, Inc. or its affiliates.
+ * Licensed under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.amazonaws.services.schemaregistry.kafkaconnect.protobuf.fromconnectdata;
 
 import com.amazonaws.services.schemaregistry.kafkaconnect.protobuf.ToProtobufTestDataGenerator;
@@ -56,7 +71,6 @@ public class ConnectDataToProtobufDataConverterTest {
 
     @Test
     public void convert_ForArrayType_ConvertsSuccessfully() {
-        // TODO add test case for repeated Message/Enum and other complex types
         final DynamicMessage arrayMessage = ToProtobufTestDataGenerator.getProtobufArrayMessage();
         final Descriptors.FileDescriptor fileDescriptor = arrayMessage.getDescriptorForType().getFile();
         final Schema arraySchema = ToProtobufTestDataGenerator.getArraySchema("arrayProtobufSchema");
@@ -182,9 +196,10 @@ public class ConnectDataToProtobufDataConverterTest {
     public void convert_ThrowsException_WhenIncorrectSchemaTypeIsSentToConverter(DataConverter dataConverter, Schema schema) {
         final DynamicMessage anyMessage = ToProtobufTestDataGenerator.getProtobufPrimitiveMessage();
         final Descriptors.FieldDescriptor anyFieldDescriptor = anyMessage.getDescriptorForType().getFields().get(0);
+        final Descriptors.FileDescriptor fileDescriptor = anyMessage.getDescriptorForType().getFile();
         assertThrows(
             DataException.class,
-            () -> dataConverter.toProtobufData(schema, anyMessage, anyFieldDescriptor, anyMessage.toBuilder())
+            () -> dataConverter.toProtobufData(fileDescriptor, schema, anyMessage, anyFieldDescriptor, anyMessage.toBuilder())
         );
     }
 }

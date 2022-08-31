@@ -1,3 +1,18 @@
+/*
+ * Copyright 2022 Amazon.com, Inc. or its affiliates.
+ * Licensed under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.amazonaws.services.schemaregistry.kafkaconnect.protobuf;
 
 import com.amazonaws.services.schemaregistry.kafkaconnect.protobuf.fromconnectschema.ConnectSchemaToProtobufSchemaConverter;
@@ -16,7 +31,7 @@ import org.apache.kafka.connect.data.Decimal;
 
 import java.math.BigDecimal;
 import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -45,8 +60,8 @@ public class ToProtobufTestDataGenerator {
 
     @SneakyThrows
     public static String getProtobufSchema(String fileName) {
-        return new String(Files.readAllBytes(Paths.get(TEST_RESOURCE_PATH, fileName)),
-            Charset.defaultCharset());
+        return new String(Files.readAllBytes(Paths.get(TEST_RESOURCE_PATH, fileName)), StandardCharsets.UTF_8)
+                .replaceAll("\r\n", "\n");
     }
 
     @SneakyThrows
@@ -709,6 +724,8 @@ public class ToProtobufTestDataGenerator {
                 .setField(descriptor.findFieldByName("strArray"), Arrays.asList("foo", "bar", "baz"))
                 .setField(descriptor.findFieldByName("boolArray"), Arrays.asList(true, false))
                 .setField(descriptor.findFieldByName("intArray"), new ArrayList<>())
+                .setField(descriptor.findFieldByName("customerArray"), Arrays.asList(customerBuilder.build()))
+                .setField(descriptor.findFieldByName("colorArray"), Arrays.asList(descriptor.findEnumTypeByName("Colors").findValueByName("RED")))
                 .setField(descriptor.findFieldByName("date"), dateBuilder.build())
                 .setField(descriptor.findFieldByName("time"), todBuilder.build())
                 .setField(descriptor.findFieldByName("timestamp"), timestampBuilder.build())
@@ -751,6 +768,8 @@ public class ToProtobufTestDataGenerator {
                 .put("strArray", Arrays.asList("foo", "bar", "baz"))
                 .put("boolArray", Arrays.asList(true, false))
                 .put("intArray", new ArrayList<>())
+                .put("customerArray", Arrays.asList(new Struct(connectSchema.field("customerArray").schema().valueSchema()).put("name", "joe")))
+                .put("colorArray", Arrays.asList("RED"))
                 .put("date", date)
                 .put("time", time)
                 .put("timestamp", timestamp)
@@ -788,6 +807,13 @@ public class ToProtobufTestDataGenerator {
                 .parameter("PROTOBUF_ENUM_VALUE.GREEN", "2")
                 .parameter("PROTOBUF_ENUM_VALUE.BLUE", "3")
                 .parameter("ENUM_NAME", getFullName(schemaName, "AllTypes.Colors"));
+        final SchemaBuilder colorArrayBuilder = new SchemaBuilder(Schema.Type.STRING)
+                .parameter("protobuf.type", "enum")
+                .parameter("PROTOBUF_ENUM_VALUE.BLACK", "0")
+                .parameter("PROTOBUF_ENUM_VALUE.RED", "1")
+                .parameter("PROTOBUF_ENUM_VALUE.GREEN", "2")
+                .parameter("PROTOBUF_ENUM_VALUE.BLUE", "3")
+                .parameter("ENUM_NAME", getFullName(schemaName, "AllTypes.Colors"));
 
         final SchemaBuilder intMapBuilder = SchemaBuilder.map(
                 new SchemaBuilder(Schema.Type.INT32).parameter(PROTOBUF_TAG, "1").optional().build(),
@@ -810,6 +836,8 @@ public class ToProtobufTestDataGenerator {
                 .put("strArray", SchemaBuilder.array(Schema.STRING_SCHEMA).parameter(PROTOBUF_TAG, "8").optional().build())
                 .put("intArray", SchemaBuilder.array(Schema.INT32_SCHEMA).parameter(PROTOBUF_TAG, "9").optional().build())
                 .put("boolArray", SchemaBuilder.array(Schema.BOOLEAN_SCHEMA).parameter(PROTOBUF_TAG, "10").optional().build())
+                .put("customerArray", SchemaBuilder.array(customerBuilder.build()).parameter(PROTOBUF_TAG, "25").optional().build())
+                .put("colorArray", SchemaBuilder.array(colorArrayBuilder.build()).parameter(PROTOBUF_TAG, "26").optional().build())
                 .put("date", Date.builder().parameter(PROTOBUF_TAG,"11").build())
                 .put("time", Time.builder().parameter(PROTOBUF_TAG,"12").optional().build())
                 .put("timestamp", Timestamp.builder().parameter(PROTOBUF_TAG,"13").optional().build())
@@ -827,7 +855,7 @@ public class ToProtobufTestDataGenerator {
                 .put("address", addressBuilder.parameter(PROTOBUF_TAG, "21").build())
                 .put("customer", customerBuilder.parameter(PROTOBUF_TAG, "22").optional().build())
                 .put("decimal", Decimal.builder(DECIMAL_DEFAULT_SCALE).parameter(PROTOBUF_TAG, "23").optional().build())
-                .put("decimalWithScale", Decimal.builder(DECIMAL_DEFAULT_SCALE).parameter(PROTOBUF_TAG, "24")
+                .put("decimalWithScale", Decimal.builder(10).parameter(PROTOBUF_TAG, "24")
                         .parameter("connect.decimal.scale", "10").optional().build())
                 .build();
     }
